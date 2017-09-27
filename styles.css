@@ -45,3 +45,50 @@ a:active {
   color: red;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+table thead th {
+  font-weight: bold;
+  background-color: lightgreen;
+}
+
+table tr:nth-child(2n) td {
+  background-color: lightcoral;
+}
+
+table tr:nth-child(2n + 1) td {
+  background-color: lightblue;
+}
+
+/* PRECEDENCIA */
+
+/*
+tag class id inline
+1    0     1   0
+0    1     1   0
+*/
+span#same-span {
+  color: green;
+}
+
+#same-span.same-span {
+  color: green;
+}
+.same-span.same-span-other {
+  color: blue;
+}
+
+/*
+tag class id inline
+0    1     0   0
+1    1     0   0
+*/
+.same-span {
+  color: blue;
+}
+
+span.same-span {
+  color: red;
+}
