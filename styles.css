@@ -34,11 +34,20 @@ a:visited {
 
 a:hover {
   color: orange;
-  font-size: 18px;
 }
+
+
 
 a:focus {
   color: blue;
+  /* border: 1px solid blue; */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #12DF24;
+  border-color: #000000;
+  border-color: #000;
+  border-color: #112233;
+  border-color: #123;
 }
 
 a:active {
@@ -91,4 +100,30 @@ tag class id inline
 
 span.same-span {
   color: red;
+}
+
+
+header {
+  background-color: rgba(255, 0, 255, 0.1);
+}
+
+
+#cajas div {
+  width: 30px;
+}
+
+#cajas div:nth-child(1) {
+  background-color: red;
+}
+
+#cajas div:nth-child(2) {
+  background-color: blue;
+}
+
+#cajas div:nth-child(3) {
+  background-color: green;
+}
+
+#cajas div:nth-child(4) {
+  background-color: yellow;
 }
