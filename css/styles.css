@@ -156,3 +156,12 @@ nav a:first-child {
   font-size: 2em;
 }
 
+#resume aside {
+    float: right;
+    width: 100px;
+    height: 100px;
+}
+
+html {
+  font-family: Roboto;
+}
