@@ -1,0 +1,51 @@
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+  outline: none;
+}
+
+.form-input {
+  width: 70%;
+  margin: 5px auto;
+}
+
+.form-input label {
+  width: 70px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.form-input input,
+.form-input textarea {
+  width: 70%;
+  padding: 5px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+}
+
+.form-input input:hover,
+.form-input textarea:hover {
+  border-style: dashed;
+}
+
+.form-input input:focus,
+.form-input textarea:focus {
+  border-color: lightblue;
+}
+
+select {
+  width: 74%;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+}
+
+.form-input-check {
+  display: inline-block;
+  width: auto;
+}
+
+.form-input-check input {
+  width: auto;
+}

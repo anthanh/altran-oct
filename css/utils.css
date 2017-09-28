@@ -1,0 +1,12 @@
+.center {
+  text-align: center !important;
+}
+
+.center-block {
+  margin: 0 auto;
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}

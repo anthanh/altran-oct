@@ -1,5 +1,21 @@
 /* BACK TO HOME BUTTON */
 
+/* BOX */
+.nav {
+  /**/
+}
+
+/* ELEMENT */
+.nav .nav-item {
+  /**/
+}
+
+/* MODIFIER */
+/* .nav .nav-item.nav-item__active { */
+.nav .nav-item:hover {
+ /**/
+}
+
 nav a:first-child {
   position: fixed;
   bottom: 20px;

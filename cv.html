@@ -18,11 +18,13 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/cv.css">
   <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/forms.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/links.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/utils.css">
 </head>
 
 <body>
@@ -249,7 +251,7 @@
       <h2>Vídeo</h2>
     </header>
 
-    <video controls>
+    <video class="center-block" controls>
       <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm">
       <source src="http://techslides.com/demos/sample-videos/small.ogv" type="video/ogg">
       <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
@@ -265,44 +267,46 @@
 
     <form>
 
-      <div>
+      <div class="form-input">
         <label for="name">Nombre</label>
         <input type="text" id="name" name="name" placeholder="Introduce tu nombre">
       </div>
 
-      <div>
+      <div class="form-input">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="Introduce tu email">
       </div>
 
-      <p>Tipo de question</p>
+      <p class="center">Tipo de question</p>
 
-      <div>
-        <label for="type1">Tipo 1</label>
-        <input type="radio" id="type1" name="type" value="0">
+      <div class="form-input">
+        <div class="form-input-check">
+          <label for="type1">Tipo 1</label>
+          <input type="radio" id="type1" name="type" value="0">
+        </div>
+
+        <div class="form-input-check">
+          <label for="type2">Tipo 2</label>
+          <input type="radio" id="type2" name="type" value="1">
+        </div>
       </div>
 
-      <div>
-        <label for="type2">Tipo 2</label>
-        <input type="radio" id="type2" name="type" value="1">
-      </div>
-
-      <div>
+      <div class="form-input">
         <label for="age">Edad</label>
         <input type="number" name="age" id="age" min="18" max="200">
       </div>
 
-      <div>
+      <div class="form-input">
         <label for="age2">Edad2</label>
         <input type="range" name="age2" id="age2" min="18" step="1" max="200">
       </div>
 
-      <div>
+      <div class="form-input">
         <label for="file">Adjunto</label>
         <input type="file" name="file" id="file">
       </div>
 
-      <div>
+      <div class="form-input">
         <label for="options"></label>
         <select name="options" id="options" multiple>
           <option value="1">opción1</option>
@@ -311,12 +315,12 @@
         </select>
       </div>
 
-      <div>
+      <div class="form-input">
         <label for="message">Mensaje</label>
         <textarea name="message" id="message" cols="30" rows="10" placeholder="Introduce tu mensaje"></textarea>
       </div>
 
-      <button type="submit">Enviar!</button>
+      <button class="center-block" type="submit">Enviar!</button>
 
     </form>
 

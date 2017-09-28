@@ -13,7 +13,9 @@
   margin-right: 10px;
 }
 
+
 /* RESUME */
+
 #resume {
   background-color: #faebd7;
   padding: 30px 25px;
@@ -24,6 +26,7 @@
   width: 100px;
   height: 100px;
 }
+
 
 /* EXPERIENCE */
 
@@ -43,13 +46,13 @@
 }
 
 
-
 /* IMAGES */
 
 #images .image-list {
   padding: 0;
   text-align: center;
 }
+
 #images .image-item {
   list-style: none;
   display: inline-block;
@@ -72,7 +75,8 @@
   /* color: #FFF; */
 }
 
-.languages-list td, .languages-list th {
+.languages-list td,
+.languages-list th {
   padding: 10px;
 }
 
@@ -81,6 +85,16 @@
 
 #video video {
   width: 85%;
-  margin: 0 auto;
-  display: block;
+}
+
+
+/* MAP */
+
+#map header {
+  margin: 0;
+}
+
+#map iframe {
+  width: 100%;
+  height: 300px;
 }
