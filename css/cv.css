@@ -1,24 +1,10 @@
-html {
-  font-family: Roboto;
-}
-
-p {
-  line-height: 1.2em;
-  word-spacing: 5px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  text-transform: capitalize;
-  letter-spacing: 1px;
-}
-
-
-h1 {
-  color: red;
-  text-align: center;
-}
-
 /* PERSONAL DATA */
+
+#personal-data {
+  background-color: rgba(0, 128, 128, 0.3);
+  color: white;
+}
+
 .photo {
   height: 100px;
   width: 100px;
@@ -27,14 +13,11 @@ h1 {
   margin-right: 10px;
 }
 
-/* EXPERIENCE */
-
-.experience-company {
-  color: blue;
-  margin-top: 40px;
-}
-
 /* RESUME */
+#resume {
+  background-color: #faebd7;
+  padding: 30px 25px;
+}
 
 #resume aside {
   float: right;
@@ -42,3 +25,62 @@ h1 {
   height: 100px;
 }
 
+/* EXPERIENCE */
+
+#experience {
+  background-color: #a9a9a9;
+}
+
+.experience-company {
+  margin-top: 40px;
+}
+
+.skill {
+  background-color: white;
+  padding: 4px 6px;
+  border-radius: 5px;
+  line-height: 2em;
+}
+
+
+
+/* IMAGES */
+
+#images .image-list {
+  padding: 0;
+  text-align: center;
+}
+#images .image-item {
+  list-style: none;
+  display: inline-block;
+  width: 32%;
+}
+
+#images .image-item img {
+  width: 100%;
+}
+
+
+/* LANGUAGES */
+
+.languages-list {
+  margin: 0 auto;
+}
+
+.languages-list th {
+  color: #aaa;
+  /* color: #FFF; */
+}
+
+.languages-list td, .languages-list th {
+  padding: 10px;
+}
+
+
+/* VIDEO */
+
+#video video {
+  width: 85%;
+  margin: 0 auto;
+  display: block;
+}
