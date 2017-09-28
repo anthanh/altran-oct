@@ -1,83 +1,26 @@
 h1 {
   color: red;
-}
-
-.experience-company {
-  color: blue;
-  margin-top: 40px;
+  text-align: center;
 }
 
 
-
-span + span {
+span+span {
   /* */
 }
 
-span.some-class {
+span.some-class {}
 
-}
+.some-class.other-class {}
 
-.some-class.other-class {
-
-}
-.some-class:hover {
-
-}
-
-a:link {
-  color: green;
-}
-
-a:visited {
-  color: yellow;
-}
-
-a:hover {
-  color: orange;
-}
-
-
-
-a:focus {
-  color: blue;
-  /* border: 1px solid blue; */
-  border-width: 1px;
-  border-style: solid;
-  border-color: #12DF24;
-  border-color: #000000;
-  border-color: #000;
-  border-color: #112233;
-  border-color: #123;
-}
-
-a:active {
-  color: red;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-table thead th {
-  font-weight: bold;
-  background-color: lightgreen;
-}
-
-table tr:nth-child(2n) td {
-  background-color: lightcoral;
-}
-
-table tr:nth-child(2n + 1) td {
-  background-color: lightblue;
-}
+.some-class:hover {}
 
 /* PRECEDENCIA */
-
 /*
 tag class id inline
 1    0     1   0
 0    1     1   0
 */
+
 span#same-span {
   color: green;
 }
@@ -85,15 +28,18 @@ span#same-span {
 #same-span.same-span {
   color: green;
 }
+
 .same-span.same-span-other {
   color: blue;
 }
+
 
 /*
 tag class id inline
 0    1     0   0
 1    1     0   0
 */
+
 .same-span {
   color: blue;
 }
@@ -102,11 +48,9 @@ span.same-span {
   color: red;
 }
 
-
 header {
   background-color: rgba(255, 0, 255, 0.1);
 }
-
 
 #cajas div {
   /* width: 30px; */
@@ -146,22 +90,4 @@ header {
 
 .circle {
   border-radius: 50%;
-}
-
-/* BACK TO HOME BUTTON */
-nav a:first-child {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-size: 2em;
-}
-
-#resume aside {
-    float: right;
-    width: 100px;
-    height: 100px;
-}
-
-html {
-  font-family: Roboto;
 }

@@ -1,0 +1,8 @@
+/* BACK TO HOME BUTTON */
+
+nav a:first-child {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 2em;
+}

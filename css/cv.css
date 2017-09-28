@@ -1,0 +1,44 @@
+html {
+  font-family: Roboto;
+}
+
+p {
+  line-height: 1.2em;
+  word-spacing: 5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+/* PERSONAL DATA */
+.photo {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  float: right;
+  margin-right: 10px;
+}
+
+/* EXPERIENCE */
+
+.experience-company {
+  color: blue;
+  margin-top: 40px;
+}
+
+/* RESUME */
+
+#resume aside {
+  float: right;
+  width: 100px;
+  height: 100px;
+}
+

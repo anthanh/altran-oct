@@ -1,0 +1,28 @@
+
+a:link {
+  color: green;
+}
+
+a:visited {
+  color: teal;
+}
+
+a:hover {
+  color: orange;
+}
+
+a:focus {
+  color: blue;
+  /* border: 1px solid blue; */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #12DF24;
+  border-color: #000000;
+  border-color: #000;
+  border-color: #112233;
+  border-color: #123;
+}
+
+a:active {
+  color: red;
+}
