@@ -119,3 +119,34 @@ header {
   width: 200px;
   border-color: red;
 }
+
+
+/* ANIMATIONS */
+
+#animation .box1 {
+  height: 100px;
+  width: 100px;
+  animation-delay: 3s;
+  animation: exampleAnimation 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes exampleAnimation {
+  0% {
+    background: red;
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(1.1) rotate(45deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(45deg) translate(10px, 40px);
+    background: yellow;
+  }
+  100% {
+    transform: scale(1.1) rotate(45deg) translate(10px, 40px);
+    background: green;
+  }
+}
