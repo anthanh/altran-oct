@@ -49,3 +49,7 @@ select {
 .form-input-check input {
   width: auto;
 }
+
+.form-input-check input[type="radio"] {
+  font-weight: bold;
+}
