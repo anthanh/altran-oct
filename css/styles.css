@@ -91,3 +91,14 @@ header {
 .circle {
   border-radius: 50%;
 }
+
+#background .bg1 {
+  width: 200px;
+  height: 200px;
+  background-color: green;
+  background-image: url(./example-bg2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
