@@ -127,7 +127,14 @@ header {
   height: 100px;
   width: 100px;
   animation-delay: 3s;
+
   animation: exampleAnimation 5s;
+
+  -webkit-animation: exampleAnimation 5s;
+  -moz-animation: exampleAnimation 5s;
+  -ms-animation: exampleAnimation 5s;
+  -o-animation: exampleAnimation 5s;
+
   animation-iteration-count: infinite;
 }
 
