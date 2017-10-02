@@ -2,6 +2,8 @@
 
 #personal-data {
   background-color: rgba(0, 128, 128, 0.3);
+}
+#personal-data ul {
   color: white;
 }
 
