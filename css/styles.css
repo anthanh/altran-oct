@@ -3,7 +3,6 @@ h1 {
   text-align: center;
 }
 
-
 span+span {
   /* */
 }
@@ -14,7 +13,10 @@ span.some-class {}
 
 .some-class:hover {}
 
+
 /* PRECEDENCIA */
+
+
 /*
 tag class id inline
 1    0     1   0
@@ -101,4 +103,19 @@ header {
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+
+/* TRANSITIONS */
+
+.original {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  transition: width 2s ease-in, border-color 2s linear 1s;
+}
+
+.original:hover {
+  width: 200px;
+  border-color: red;
 }

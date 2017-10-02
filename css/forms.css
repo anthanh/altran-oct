@@ -53,3 +53,16 @@ select {
 .form-input-check input[type="radio"] {
   font-weight: bold;
 }
+
+form button {
+  border: 2px solid grey;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  /* transition: all 0.3s; */
+  border-radius: 5px;
+}
+
+form button:hover {
+  border-color: lightgreen;
+  background-color: green;
+  color: white;
+}
