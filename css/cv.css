@@ -2,20 +2,45 @@
 
 #personal-data {
   background-color: rgba(0, 128, 128, 0.3);
+  text-align: center;
 }
+
 #personal-data ul {
   color: white;
+  text-align: left;
 }
 
 .photo {
-  height: 100px;
-  width: 100px;
   border-radius: 50%;
-  float: right;
-  margin-right: 10px;
+  height: 80px;
+  width: 80px;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  transform: translate(-20px, 25px) rotate(90deg);
 }
+
+/* mobile-first vs graceful-degradation */
+/* movil -> desktop  => mobile first */
+/* desktop -> movil => graceful degradation */
+
+/* 320 watch */ /* <= aun mas pequeña! */
+/* 680 mobile */ /* <= pequeña! */
+/* 1024 tablet */
+/* 1400 desktop */
+
+@media screen and (min-width: 620px) {
+  #personal-data {
+    text-align: left;
+  }
+
+  /* desktop */
+  .photo {
+    height: 100px;
+    width: 100px;
+    float: right;
+    margin-right: 10px;
+    transform: translate(-20px, 25px) rotate(90deg);
+  }
+}
+
 
 
 /* RESUME */
