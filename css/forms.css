@@ -6,20 +6,18 @@ textarea:focus {
 }
 
 .form-input {
-  width: 70%;
-  margin: 5px auto;
+  width: 90%;
+  margin: 15px auto;
 }
 
 .form-input label {
-  width: 70px;
   display: inline-block;
-  text-align: right;
   margin-right: 10px;
 }
 
 .form-input input,
 .form-input textarea {
-  width: 70%;
+  width: 90%;
   padding: 5px;
   border: 2px solid #ddd;
   border-radius: 6px;
@@ -36,7 +34,7 @@ textarea:focus {
 }
 
 select {
-  width: 74%;
+  width: 90%;
   border: 2px solid #ddd;
   border-radius: 6px;
 }
@@ -65,4 +63,24 @@ form button:hover {
   border-color: lightgreen;
   background-color: green;
   color: white;
+}
+
+@media screen and (min-width: 620px) {
+  .form-input {
+    width: 70%;
+    margin: 5px auto;
+  }
+  .form-input label {
+    width: 70px;
+    text-align: right;
+  }
+
+  .form-input input,
+  .form-input textarea {
+    width: 70%;
+  }
+
+  select {
+    width: 74%;
+  }
 }
