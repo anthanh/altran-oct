@@ -29,6 +29,12 @@ nav a:first-child {
   font-size: 2em;
 }
 
+nav a:nth-child(n+3):before {
+  content: "|";
+  display: inline;
+  margin: 0 5px;
+}
+
 nav a:first-child:before {
   content: "";
   display: block;
