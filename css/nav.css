@@ -47,5 +47,5 @@ nav a:first-child:before {
   border-style: solid;
   border-width: 0 10px 15px 10px;
   border-color: transparent transparent white transparent;
-  left: 5px;
+  left: 1px;
 }
