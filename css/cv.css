@@ -10,6 +10,12 @@
   text-align: left;
 }
 
+#personal-data ul strong:after {
+  content: ":";
+  display: inline;
+  margin-right: 5px;
+}
+
 .photo {
   border-radius: 50%;
   height: 80px;
