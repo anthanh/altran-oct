@@ -27,6 +27,7 @@ nav a:first-child {
   bottom: 20px;
   right: 20px;
   font-size: 2em;
+  background-color: white;
 }
 
 nav a:nth-child(n+3):before {
