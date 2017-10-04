@@ -1,3 +1,4 @@
+// 'use strict';
 // alert('woho!');
 
 // Esta funciona hace una cosa super loca bla bla bla
@@ -308,16 +309,58 @@ class MyClass {
 
   constructor() {
     this.name = 'pepe'
+    this.play = function () {
+      // return args.reduce((num, acum) => {
+      //   console.log(this.name)
+      //   return num + acum;
+      // }, 0);
+    };
   }
 
-  play() {
-    return args.reduce((num, acum) => {
-      console.log(this.name)
-      return num + acum;
-    }, 0);
-  }
 }
 
-myClass = new MyClass()
+myClass = new MyClass();
 
-myClass.play()
+// myClass.play();
+
+
+
+(function () {
+  // this1
+  var a = b = 3;
+  var someProp = this.h
+
+  (function () {
+    // this2
+    var c = b = a = someProp = 4;
+  })();
+
+})();
+
+function test() {
+  console.log(a)
+  console.log(foo());
+
+  var a = 1;
+
+  function foo() {
+    return 2;
+  }
+
+}
+
+
+// hoisting
+function test() {
+  var a;
+
+  function foo() {
+    return 2;
+  }
+
+  console.log(a);
+  console.log(foo());
+
+  a = 1;
+
+}
