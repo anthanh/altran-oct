@@ -199,8 +199,6 @@ pau.team === 'Spurs';
 class PlayerClass extends Person {
   constructor(name, surname, level) {
     super(name, surname);
-    this.name = name;
-    this.surname = surname;
     this.level = level;
     // ...
   }
