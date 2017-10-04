@@ -364,3 +364,26 @@ function test() {
   a = 1;
 
 }
+
+
+node = document.createElement('a')
+node.setAttribute('href', 'anthanh.com')
+node.setAttribute('target', '_blank')
+node.setAttribute('href', 'http://anthanh.com')
+node.setAttribute('href', 'http://anthanh.me')
+node.setAttribute('cualquier-cosa', 'otra-cosa')
+node.setAttribute('data-cualquier-cosa', 'otra-cosa')
+node.setAttribute('cualquier-cosa')
+node.setAttribute('cualquier-cosa', undefined)
+node.removeAttribute('cualquier-cosa')
+
+node = document.createElement('input')
+node.setAttribute('type', 'email')
+node.setAttribute('value', 'hello@anthanh.me')
+node.value = 'hello@anthanh.me'
+node.setAttribute('placeholder', 'an email!')
+
+// al final
+document.body.appendChild(node)
+// en un punto en particular
+document.querySelector('#box-model').appendChild(node)
