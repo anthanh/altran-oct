@@ -384,6 +384,35 @@ node.value = 'hello@anthanh.me'
 node.setAttribute('placeholder', 'an email!')
 
 // al final
-document.body.appendChild(node)
+document.body.appendChild(node);
 // en un punto en particular
-document.querySelector('#box-model').appendChild(node)
+document.querySelector('#box-model').appendChild(node);
+
+var node = document.querySelector('#box-model');
+node.style.backgroundColor = '#456325';
+node.classList.add('my-class');
+node.classList.remove('my-class');
+node.classList.contains('my-class');
+node.classList.add('my-class');
+node.classList.contains('my-class');
+
+/**
+ * ES5
+ */
+function sincoma1() {
+  return {
+    value : true
+  }
+}
+
+function sincoma2() {
+  return ;
+  // {
+  //   value : true
+  // }
+}
+
+/**
+ * ~ES6 = TYPESCRIPT
+ * NO COMMAS!!!
+ */
