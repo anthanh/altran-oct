@@ -218,8 +218,8 @@ player.surname
 player.play()
 
 // interface AnyPerson {
-  // name: string
-  // surname: string
+// name: string
+// surname: string
 //   play: function
 // };
 
@@ -231,7 +231,7 @@ var myPlayer = {
   name: 'Anth',
   surname: 'Pham',
   shoes: 'adidas',
-  play: function() {
+  play: function () {
     console.log('play');
   }
 };
@@ -264,3 +264,60 @@ var myPlayer = {
   toString()
 ]
 */
+
+
+var obj = {
+  name: 'Pepito',
+  saludo: function () {
+    console.log('hola ' + this.name + '!');
+  }
+};
+
+
+function suma( /*...*/ ) {
+  console.log(arguments);
+  var args = Array.prototype.splice.call(arguments, 0, arguments.length)
+
+  var total = 0;
+  return args.forEach(function (num) {
+    total = total + num;
+    // total += num;
+  });
+
+  return args.reduce(function (num, acum) {
+    console.log(this.name)
+    return num + acum;
+  }, 0);
+
+  // es5
+  // function ()  {
+  //   return true
+  // }
+  //
+  // es6
+  // () => true
+
+  return args.reduce((num, total) => num + total, 0);
+}
+
+suma(1, 2, 3);
+
+
+
+class MyClass {
+
+  constructor() {
+    this.name = 'pepe'
+  }
+
+  play() {
+    return args.reduce((num, acum) => {
+      console.log(this.name)
+      return num + acum;
+    }, 0);
+  }
+}
+
+myClass = new MyClass()
+
+myClass.play()
