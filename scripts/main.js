@@ -201,10 +201,40 @@ class PlayerClass extends Person {
     super(name, surname);
     this.level = level;
     // ...
+    this._TECNICA_SECRETA_DE_JUEGO = 'Play!';
   }
+
+
+  play() {
+    console.log(this._TECNICA_SECRETA_DE_JUEGO)
+  }
+
 }
 
 var player = new PlayerClass('name', 'surname', 'level')
+
+player.name
+player.surname
+player.play()
+
+// interface AnyPerson {
+  // name: string
+  // surname: string
+//   play: function
+// };
+
+// interface AnyPlayer extend AnyPerson {
+//   play: function
+// };
+
+var myPlayer = {
+  name: 'Anth',
+  surname: 'Pham',
+  shoes: 'adidas',
+  play: function() {
+    console.log('play');
+  }
+};
 
 // pau.team
 /*
