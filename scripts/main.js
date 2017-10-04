@@ -195,6 +195,19 @@ scotiePippen.team === 'Chicago Bulls';
 
 pau.team === 'Spurs';
 
+
+class PlayerClass extends Person {
+  constructor(name, surname, level) {
+    super(name, surname);
+    this.name = name;
+    this.surname = surname;
+    this.level = level;
+    // ...
+  }
+}
+
+var player = new PlayerClass('name', 'surname', 'level')
+
 // pau.team
 /*
 [
