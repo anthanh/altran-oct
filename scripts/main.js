@@ -104,10 +104,10 @@ var myVariable = undefined;
 
 
 
-function1();
 var function1 = function () {
   console.log('function1')
 };
+function1();
 
 
 // hoisting
@@ -131,7 +131,7 @@ function function2() {
 
 var list = [4, 54, 652, 2, 23, 4];
 
-list.short(function (value1, value2) {
+list.sort(function (value1, value2) {
   if (value1 >= value2) return -1;
   if (value1 < value2) return 1;
   if (value1 === value2) return 0;
@@ -151,12 +151,16 @@ var list = [{
   id: 4
 }];
 
-list.short(function (obj1, obj2) {
+list.sort(function (obj1, obj2) {
   if (obj1.id >= obj2.id) return -1;
   if (obj1.id < obj2.id) return 1;
   if (obj1.id === obj2.id) return 0;
 });
 
+function Person(name, surname) {
+  this.name = name;
+  this.surname = surname;
+}
 
 function Player(name, surname, level) {
   this.name = name;
@@ -164,9 +168,20 @@ function Player(name, surname, level) {
   this.level = level;
 }
 
-var airJordan = new Player('Michael', 'Jordan', 'god');
-var scotiePippen = new Player('Scotie', 'Pippen', 'god');
-var pau = new Player('Pau', 'Gasol', 'god');
+Player.prototype = new Person();
+
+function PivotPlayer(name, surname, level, shoes) {
+  this.name = name;
+  this.surname = surname;
+  this.level = level;
+  this.shoes = shoes;
+}
+
+PivotPlayer.prototype = new Player();
+
+var airJordan = new PivotPlayer('Michael', 'Jordan', 'god', '');
+var scotiePippen = new PivotPlayer('Scotie', 'Pippen', 'god', 'nike');
+var pau = new PivotPlayer('Pau', 'Gasol', 'god', '');
 
 airJordan.name === 'Michael';
 
