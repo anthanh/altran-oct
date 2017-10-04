@@ -69,7 +69,7 @@ console.log("parseInt('10 cows')", parseInt('10 cows', 10));
 console.log("parseInt('cows 10')", parseInt('cows 10', 10));
 console.log("parseInt('09/2017')", parseInt('09/2017', 10));
 
-var expresion
+var expresion;
 
 // if (expresion === false) {}
 // if (expresion === '') {}
@@ -84,7 +84,7 @@ if (variableDefinida) {
 
 
 var condition1 = function () {
-  return ''
+  return '';
 };
 var condition2 = function () {};
 var condition3 = function () {};
@@ -106,7 +106,7 @@ var myVariable = undefined;
 
 
 var function1 = function () {
-  console.log('function1')
+  console.log('function1');
 };
 function1();
 
@@ -184,14 +184,14 @@ var airJordan = new PivotPlayer('Michael', 'Jordan', 'god', '');
 var scotiePippen = new PivotPlayer('Scotie', 'Pippen', 'god', 'nike');
 var pau = new PivotPlayer('Pau', 'Gasol', 'god', '');
 
-airJordan.name === 'Michael';
+console.log(airJordan.name === 'Michael');
 
 Player.prototype.team = 'Chicago Bulls';
 
 pau.team = 'Spurs';
 
-airJordan.team === 'Chicago Bulls';
-scotiePippen.team === 'Chicago Bulls';
+console.log(airJordan.team === 'Chicago Bulls');
+console.log(scotiePippen.team === 'Chicago Bulls');
 
 
 pau.team === 'Spurs';
@@ -207,16 +207,16 @@ class PlayerClass extends Person {
 
 
   play() {
-    console.log(this._TECNICA_SECRETA_DE_JUEGO)
+    console.log(this._TECNICA_SECRETA_DE_JUEGO);
   }
 
 }
 
 var player = new PlayerClass('name', 'surname', 'level')
 
-player.name
-player.surname
-player.play()
+player.name;
+player.surname;
+player.play();
 
 // interface AnyPerson {
 // name: string
@@ -286,7 +286,7 @@ function suma( /*...*/ ) {
   });
 
   return args.reduce(function (num, acum) {
-    console.log(this.name)
+    console.log(this.name);
     return num + acum;
   }, 0);
 
@@ -328,7 +328,7 @@ myClass = new MyClass();
 (function () {
   // this1
   var a = b = 3;
-  var someProp = this.h
+  // var someProp = this.h
 
   (function () {
     // this2
@@ -338,7 +338,7 @@ myClass = new MyClass();
 })();
 
 function test() {
-  console.log(a)
+  console.log(a);
   console.log(foo());
 
   var a = 1;
@@ -366,22 +366,21 @@ function test() {
 }
 
 
-node = document.createElement('a')
-node.setAttribute('href', 'anthanh.com')
-node.setAttribute('target', '_blank')
-node.setAttribute('href', 'http://anthanh.com')
-node.setAttribute('href', 'http://anthanh.me')
-node.setAttribute('cualquier-cosa', 'otra-cosa')
-node.setAttribute('data-cualquier-cosa', 'otra-cosa')
-node.setAttribute('cualquier-cosa')
-node.setAttribute('cualquier-cosa', undefined)
-node.removeAttribute('cualquier-cosa')
+node = document.createElement('a');
+node.setAttribute('href', 'anthanh.com');
+node.setAttribute('target', '_blank');
+node.setAttribute('href', 'http://anthanh.com');
+node.setAttribute('href', 'http://anthanh.me');
+node.setAttribute('cualquier-cosa', 'otra-cosa');
+node.setAttribute('data-cualquier-cosa', 'otra-cosa');
+node.setAttribute('cualquier-cosa', undefined);
+node.removeAttribute('cualquier-cosa');
 
-node = document.createElement('input')
-node.setAttribute('type', 'email')
-node.setAttribute('value', 'hello@anthanh.me')
-node.value = 'hello@anthanh.me'
-node.setAttribute('placeholder', 'an email!')
+node = document.createElement('input');
+node.setAttribute('type', 'email');
+node.setAttribute('value', 'hello@anthanh.me');
+node.value = 'hello@anthanh.me';
+node.setAttribute('placeholder', 'an email!');
 
 // al final
 document.body.appendChild(node);
@@ -401,12 +400,12 @@ node.classList.contains('my-class');
  */
 function sincoma1() {
   return {
-    value : true
-  }
+    value: true
+  };
 }
 
 function sincoma2() {
-  return ;
+  return;
   // {
   //   value : true
   // }
@@ -416,3 +415,87 @@ function sincoma2() {
  * ~ES6 = TYPESCRIPT
  * NO COMMAS!!!
  */
+
+
+var button = document.querySelector('button[type="submit"]');
+
+function buttonHandler(event) {
+  event.preventDefault();
+  alert('clicked!');
+}
+
+button.addEventListener('click', buttonHandler);
+
+// var anchor = document.querySelectorAll('a');
+// anchor.forEach(function(node) {
+//   node.addEventListener('click', buttonHandler);
+// });
+
+
+var elem1 = document.querySelector('header nav li');
+elem1.addEventListener('click', function (event) {
+  console.log('li');
+  // event.stopPropagation();
+});
+
+var elem1 = document.querySelector('header nav');
+elem1.addEventListener('click', function () {
+  console.log('nav');
+});
+
+
+
+
+
+
+
+
+
+for (var i = 0; i <= 5; i++) {
+
+  var button = document.createElement('button');
+  button.setAttribute('data-index', i);
+  var text = document.createTextNode(`button ${i}`);
+  button.appendChild(text);
+
+  button.addEventListener('click', function (event) {
+    var index = event.target.getAttribute('data-index');
+    console.log(`clicked ${index} button`);
+  });
+
+  document.body.appendChild(button);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+for (var i = 0; i <= 5; i++) {
+  var button = document.createElement('button');
+  var text = document.createTextNode(`button ${i}`);
+  button.appendChild(text);
+
+  // button.addEventListener('click', (() => () => {} )())
+
+  button.addEventListener('click', (function (index) {
+
+    // this.index = i iteración correcta!
+
+    return function() {
+      // this diferente!
+      console.log(`clicked ${index} button`);
+    };
+
+    // CLAUSURA!!!
+
+  })(i));
+
+  document.body.appendChild(button);
+}
