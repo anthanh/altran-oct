@@ -573,3 +573,42 @@ var service = myService('http://otherdomain.com');
 service.getUsers()
 
 
+
+
+var timeout = setTimeout(() => {  console.log('TIMEOUT!')  }, 5000)
+clearTimeout(timeout)
+
+var inverval = setInterval(() => {  console.log('INVERVAL!')  }, 1000)
+clearInterval(inverval)
+
+
+(function() {
+  console.log(1);
+  setTimeout(() => { console.log('2') }, 1000);
+  // defer next tick (hack)
+  setTimeout(() => { console.log('3') }, 0);
+  console.log(4);
+})();
+
+/*
+
+1
+4
+undefined
+3
+2
+*/
+
+
+
+for(var i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), i * 1000);
+}
+
+for(var i = 0; i < 5; i++) {
+  setTimeout((function(index) {
+    return function() {
+      console.log(index)
+    };
+  })(i) , i * 1000);
+}
