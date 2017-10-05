@@ -622,3 +622,152 @@ $('input[name="checkbox-input"]')[1].checked = false
 $(document).ready(() => {
   // DOM READY FOR COMBAT
 });
+
+
+var promise = $.ajax({
+  dataType: 'json',
+  url: 'http://noexiste.dominio'
+  // url: 'http://jsonplaceholder.typicode.com/posts'
+});
+
+promise.then(function(data) {
+  console.log(data[0], data.length);
+}).catch(function(error) {
+  console.error(error);
+});
+
+var timeoutPromise = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    resolve('valor');
+  }, 5000);
+});
+
+timeoutPromise.then(function(data) {
+  console.log('data', data); // => valor
+})
+
+function myServiceMock(enpoint) {
+  var _apiEndpoint = endpoint || 'http://mydomain.com/';
+  var users = [1, 2, 3, 4];
+  var books = [1, 2, 3, 4];
+
+  return {
+    getUsers: function() {
+      return Promise.resolve(users);
+    },
+    getBooks: function() {
+      return Promise.resolve(books);
+    }
+  };
+
+}
+
+// Sincronizar promesas
+// promesa1 =>  |
+// promesa2 =>  | => promesa4
+// promesa3 =>  |
+
+var promise1 = Promise.resolve();
+var promise2 = Promise.resolve();
+var promise3 = Promise.resolve();
+var promise4 = Promise.resolve();
+
+
+var parallelPromises = Promise.all([promise1, promise2, promise3]).then(function(responses) {
+  var response1 = responses[0];
+  var response2 = responses[1];
+  var response3 = responses[2];
+  return promise4;
+  // ALL PROMISE SUCCESS!!!!!
+}).catch(function(error) {
+  // SOME HAS FAILED !!!!
+  return Promise.reject(error)
+})
+
+
+
+// Serializar promesas
+// promesa5 => promesa6 => promesa7  -> error
+//   -> error     -> error     -> error
+var promise5 = Promise.resolve();
+var promise6 = Promise.resolve();
+var promise7 = Promise.resolve();
+
+promise5.then(() => {
+  return promise6.then(() => {
+      return promise7
+  })
+})
+
+
+
+var finalPromise = promise5
+.then(promise6)
+.then(promise7)
+.then((data7) => {
+  // ==>>>>>>>>> TODO HA IDO BIEN
+  return { ok: data.ok, status: data.status };
+}).catch((error) => {
+  console.error(error)
+  return Promise.reject(error);
+})
+
+var finalPromise = promise5.then(() => {
+  return promise6.catch((error) => {
+    console.error(error);
+    // hago cosas con el error
+    return Promise.reject(error);// <= propagar el error de nuevo
+  });
+}).then(() => {
+  return promise7
+}).then(function(data7) {
+  // ==>>>>>>>>> TODO HA IDO BIEN
+  return { ok: data.ok, status: data.status };
+}).catch((error) => {
+  console.error(error)
+  return Promise.reject(error);
+})
+
+
+finalPromise.then((data) => {
+  // { ok: data.ok, status: data.status }
+  console.log(data)
+  return data;
+}).catch((error) => {
+  return Promise.reject(error)
+})
+
+
+// Paralelizar + Sincronizar promesas
+// promesa1 =>  |
+// promesa2 =>  | => promesa4 => promesa5 => promesa6 => promesa7  -> error
+// promesa3 =>  |
+
+// parallelPromises.then(() => { return finalPromise })
+parallelPromises.then(() => finalPromise)
+
+
+// modelo antogio de callbacks
+$.ajax({
+  dataType: 'json',
+  url: 'http://noexiste.dominio',
+  complete: function() {},
+  error: function() {},
+  // url: 'http://jsonplaceholder.typicode.com/posts'
+})
+
+
+// login(username, provider) => {
+//   auth(provider)
+//   .then(authServer)
+//   .then(updateUser)
+//   .then(getUserData)
+// }
+
+// getUserData() => {
+//   return $.ajax({
+//     ...
+//   })
+// }
+
+// login('pepe@gmail.com', 'facebook')

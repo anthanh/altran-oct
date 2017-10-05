@@ -1,0 +1,34 @@
+[{
+    "name": "Juanito",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  }, {
+    "name": "Luis",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  },
+  {
+    "name": "Bea",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  },
+  {
+    "name": "Manuel",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  }, {
+    "name": "Guillermo",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  }, {
+    "name": "Miguel Ángel",
+    "phone": "1232342342",
+    "number": 3,
+    "boolean": true
+  }
+]
