@@ -612,3 +612,13 @@ for(var i = 0; i < 5; i++) {
     };
   })(i) , i * 1000);
 }
+
+
+// jquery: inputs
+
+$('input[id="name"]').val('ay ay ay')
+$('input[name="checkbox-input"]')[1].checked = false
+
+$(document).ready(() => {
+  // DOM READY FOR COMBAT
+});
