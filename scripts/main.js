@@ -499,3 +499,77 @@ for (var i = 0; i <= 5; i++) {
 
   document.body.appendChild(button);
 }
+
+
+// 1º paso
+// function llamame() {
+//   var nombre = 'pepe';
+
+//   function otraLlamada() {
+//     console.log(`Hola ${nombre}!`);
+//   }
+
+//   otraLlamada();
+// }
+
+// llamame();
+
+// 2º paso
+// function llamame() {
+//   var nombre = 'pepe';
+
+//   function otraLlamada() {
+//     console.log(`Hola ${nombre}!`);
+//   }
+
+//   return otraLlamada;
+// }
+
+// var myfuncion = llamame();
+// myfuncion();
+
+
+// 3º : ejemplo
+function sumaNum(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var suma5 = sumaNum(5);
+var suma10 = sumaNum(10);
+
+// 4º : ejemplo
+function increment() {
+  var count = 0;
+  return function() {
+    return count = count + 1;
+    // return count += 1;
+    // return ++count;
+  };
+}
+
+
+// 5º ejemplo
+
+function myService(enpoint) {
+  var _apiEndpoint = endpoint || 'http://mydomain.com/';
+
+  return {
+    getUsers: function() {
+      return _apiEndpoint + 'users';
+    },
+    getBooks: function() {
+      return _apiEndpoint + 'books';
+    },
+    createUser: function(user) {
+      console.log(_apiEndpoint + user);
+    }
+  };
+
+}
+
+var service = myService('http://otherdomain.com');
+service.getUsers()
+
+
