@@ -22,6 +22,10 @@ nav a {
   transition: color 0.2s ease-in-out;
 }
 
+nav a.active {
+  color: orange;
+}
+
 nav a:first-child {
   position: fixed;
   bottom: 20px;
