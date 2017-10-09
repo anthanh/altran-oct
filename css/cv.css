@@ -92,18 +92,47 @@
   list-style: none;
   display: inline-block;
   width: 90%;
+  position: relative;
 }
+
+#images .image-item:after {
+  background-color: rgba(10, 10, 10, 0.5);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#images .image-item:hover:after {
+  opacity: 1;
+}
+
 
 @media screen and (min-width: 620px) {
   #images .image-item {
-    width: 32%;
+    height: 200px;
+    overflow: hidden;
+    width: 200px;
   }
 }
 
 #images .image-item img {
+  object-fit: cover;
+  object-position: center center;
+  height: 100%;
   width: 100%;
+  transform: scale(1);
+  transition: transform 0.3s ease-in;
 }
 
+#images .image-item:hover img {
+  transform: scale(1.2);
+}
 
 /* LANGUAGES */
 
