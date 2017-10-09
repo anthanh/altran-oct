@@ -118,4 +118,8 @@ header a.nav-top:before {
     background-color: white;
   }
 
+  header.toggle:before {
+    display: none;
+  }
+
 }
