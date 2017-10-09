@@ -38,7 +38,7 @@
         url: 'https://mybackend.com/upload',
         type: 'POST',
         contentType: 'application/json',
-        body: JSON.stringify(data)
+        data: JSON.stringify(data)
       });
 
       promise = fetch('https://mybackend.com/upload', {
