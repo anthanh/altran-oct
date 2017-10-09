@@ -25,14 +25,13 @@
 
     if (event.target.checkValidity()) {
       var data = {};
-      $('form input').each((index, elemItem) => {
+      $('form input, form textarea, form select').each((index, elemItem) => {
         data[elemItem.name] = $(elemItem).val();
       });
 
-      data.message = $('form textarea').val();
-      data.options = $('form select').val();
-
       console.log(data);
+
+      return;
 
       var promise = $.ajax({
         url: 'https://mybackend.com/upload',
@@ -65,5 +64,11 @@
     // console.log(nameValid, emailValid)
 
   });
+
+  $('#age2').change((event) => {
+    $('#age').val($(event.target).val());
+  });
+
+
 
 })();
