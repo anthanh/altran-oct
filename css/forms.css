@@ -5,6 +5,16 @@ textarea:focus {
   outline: none;
 }
 
+.form-input input.invalid,
+.form-input textarea.invalid {
+  border-color: red;
+}
+
+.form-input input.success,
+.form-input textarea.success {
+  border-color: green;
+}
+
 .form-input {
   width: 90%;
   margin: 15px auto;
