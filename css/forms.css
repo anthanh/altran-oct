@@ -6,12 +6,14 @@ textarea:focus {
 }
 
 .form-input input.invalid,
-.form-input textarea.invalid {
+.form-input textarea.invalid,
+.form-input select.invalid {
   border-color: red;
 }
 
 .form-input input.success,
-.form-input textarea.success {
+.form-input textarea.success,
+.form-input select.success {
   border-color: green;
 }
 
