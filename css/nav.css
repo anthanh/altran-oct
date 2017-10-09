@@ -33,6 +33,17 @@
   transform: translateX(0);
 }
 
+header.toggle:before {
+  content: "";
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(010, 10, 10, 0.1);
+  position: fixed;
+  top:0;
+  left: 0;
+}
+
 #nav + .menu-toggle {
   background-color: none;
   border: 1px solid grey;
