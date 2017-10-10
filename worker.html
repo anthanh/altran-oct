@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // Teniendo el siguiente Web Worker
+    var worker = new Worker("scripts/worker.js");
+    // Podemos terminar su ejecución
+    // worker.terminate();
+    // worker = undefined;
+    // Recibir notificaciones
+    worker.onmessage = function (event) {
+      // En event.data tenemos el dato notificado
+      console.log(event)
+    };
+
+  </script>
+
+</body>
+
+</html>
