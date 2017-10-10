@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <button id="notify">Notificame!</button>
+
+  <script>
+    document.getElementById('notify').addEventListener('click', function () {
+      if (!('Notification' in window)) {
+        alert('Notificaciones no soportadas');
+        return;
+      }
+      Notification.requestPermission(function (permission) {
+        var notification = new Notification(
+          'Hello, hello', {
+            body: 'Hola!',
+            icon: 'vertigo.png'
+          }
+        );
+      });
+    });
+  </script>
+</body>
+
+</html>
