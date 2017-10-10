@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // if (navigator.geolocation) {
+
+    //   navigator.geolocation.getCurrentPosition(
+    //     successHandler, // manejador de respuesta correcta
+    //     function () {}, // manejado de errores
+    //     {} // opciones
+    //   );
+    // }
+    // // El navegador no soporta geolocalización
+    // else { /* Código*/ }
+
+    function successHandler(data) {
+      console.log('successHandler', data)
+    }
+
+    function errorHandler(error) {
+      console.log('errorHandler', error)
+    }
+
+    // El navegador soporta geolocalización
+    if (navigator.geolocation) {
+      var watchId = navigator.geolocation.watchPosition(
+        successHandler, // manejador de respuesta correcta
+        errorHandler, // manejado de errores
+        {} // opciones
+      );
+    }
+    // El navegador no soporta geolocalización
+    else { /* Código*/ }
+
+  </script>
+
+</body>
+
+</html>
