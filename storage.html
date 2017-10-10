@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // El navegador soporta Web Storage
+    if (typeof (Storage) !== "undefined") {
+      // Setter
+      localStorage.setItem("pageSize", 10);
+      // Getter
+      // var size = Number(localStorage.getItem("pageSize"));
+      // var size = parseInt(localStorage.getItem("pageSize"), 10);
+      var size = +localStorage.getItem("pageSize");
+      console.log(size)
+
+      localStorage.setItem('attr', true)
+      localStorage.getItem('attr')
+      localStorage.setItem('attr', {value: true})
+      localStorage.getItem('attr')
+      localStorage.setItem('attr', JSON.stringify({value: true}))
+      localStorage.getItem('attr')
+      JSON.parse(localStorage.getItem('attr'))
+
+      var obj1 = {
+        attr1: 1,
+        attr2: 2,
+        attr3: 3,
+        deeper: {
+          deepAttr: 1
+        }
+      }
+
+      var obj2 = {
+        attr1: obj1.attr1,
+        attr2: obj1.attr2,
+        attr3: obj1.attr3
+      }
+
+      // spread operator as a clone objects
+      obj2 = {
+        ...obj1,
+        attr2: 5,
+        attr4: 4
+      }
+
+      // deep clone
+      obj2 = JSON.parse(JSON.stringify(obj1))
+
+    }
+    // El navegador no soporta Web Storage
+    else { /* Código*/ }
+
+  </script>
+
+</body>
+
+</html>
