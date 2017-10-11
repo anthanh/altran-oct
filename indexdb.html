@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    var indexedDB = window.indexedDB || window.mozIndexedDB ||
+      window.webkitIndexedDB || window.msIndexedDB;
+    var request = indexedDB.open('example-db', 1);
+    var db;
+
+    request.onsuccess = function (e) {
+      console.log('Base de datos cargada correctamente');
+      db = request.result;
+
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response) => response.json())
+        .then(saveElements);
+
+    };
+    request.onerror = function (e) {
+      console.log('Error cargando la base de datos');
+    };
+
+    request.onupgradeneeded = function (e) {
+      var db = event.target.result;
+      var objectStore = db.createObjectStore("people", {
+        keyPath: 'id',
+        autoIncrement: true
+      });
+      objectStore.createIndex('by_name', 'name', {
+        unique: false
+      });
+      objectStore.createIndex('by_dni', 'dni', {
+        unique: true
+      });
+      // objectStore.createIndex('by_email', 'email', {
+      //   unique: true
+      // });
+      // objectStore.createIndex('by_peopleId', 'peopleId', {
+      //   unique: true
+      // });
+    };
+
+    function saveElements(json) {
+      var people = json;
+      var transaction = db.transaction('people', 'readwrite');
+      // transaction.oncomplete = function (event) {
+      //   alert('All done!');
+      // };
+      // Tratar de capturar al menos los errores
+      // transaction.onerror = function (event) {
+      //   // handle errors!
+      // };
+      var peopleObjectStore = transaction.objectStore('people');
+
+      people.forEach((peopleItem, index) => {
+        var addResponse = peopleObjectStore.add(peopleItem);
+        // addResponse.onsuccess = (function (i) {
+        //   return function () {
+        //     console.log('added', i);
+        //   }
+        // })(index);
+      })
+    }
+
+    function getById(id) {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore("people");
+      var request = objectStore.get(id);
+      request.onerror = function (event) {
+        // Handle errors!
+      };
+      request.onsuccess = function (event) {
+        // Do something with the request.result!
+        if (!request.result) {
+          console.log("Not found!");
+        } else {
+          console.log("GET: -> " + request.result.name);
+        }
+      };
+    }
+
+    setTimeout(() => {
+      getById(1);
+    }, 1000)
+
+  </script>
+
+</body>
+
+</html>
