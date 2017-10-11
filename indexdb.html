@@ -12,6 +12,109 @@
 
 
   <script>
+
+// Promise version
+// function initDB(name, version) {
+//       name = name || 'example-db';
+//       version = version || 1;
+//       return new Promise((resolve, reject) => {
+//         var indexedDB = window.indexedDB || window.mozIndexedDB ||
+//           window.webkitIndexedDB || window.msIndexedDB;
+//         var request = indexedDB.open(name, version);
+
+//         request.onsuccess = function (e) {
+//           console.log('Base de datos cargada correctamente');
+//           db = request.result;
+
+//           fetch('https://jsonplaceholder.typicode.com/users')
+//             .then((response) => response.json())
+//             .then(saveElements)
+//             .then(resolve)
+//             .catch(error => reject(error));
+
+//         };
+//         request.onerror = function (error) {
+//           console.log('Error cargando la base de datos');
+//           reject(error)
+//         };
+
+//         request.onupgradeneeded = function (e) {
+//           var db = event.target.result;
+//           var objectStore = db.createObjectStore("people", {
+//             keyPath: 'id',
+//             autoIncrement: true
+//           });
+//           objectStore.createIndex('by_name', 'name', {
+//             unique: false
+//           });
+//           objectStore.createIndex('by_dni', 'dni', {
+//             unique: true
+//           });
+//           // objectStore.createIndex('by_email', 'email', {
+//           //   unique: true
+//           // });
+//           // objectStore.createIndex('by_peopleId', 'peopleId', {
+//           //   unique: true
+//           // });
+//         };
+
+//       })
+//     }
+
+//     function saveElements(json) {
+//       var promises = [];
+
+//       var people = json;
+//       var transaction = db.transaction('people', 'readwrite');
+//       // transaction.oncomplete = function (event) {
+//       //   alert('All done!');
+//       // };
+//       // Tratar de capturar al menos los errores
+//       // transaction.onerror = function (event) {
+//       //   // handle errors!
+//       // };
+//       var peopleObjectStore = transaction.objectStore('people');
+
+//       people.forEach((peopleItem, index) => {
+
+//         // var promise = new Promise((resolve, reject) => {
+//         //   var addResponse = peopleObjectStore.add(peopleItem);
+//         //   addResponse.onsuccess = ((i) => {
+//         //     return () => {
+//         //       console.log('added', i);
+//         //       resolve();
+//         //     }
+//         //   })(index);
+//         //   addResponse.onerror = (error) => {
+//         //     console.error('add error', error);
+//         //     reject(error);
+//         //   }
+//         // });
+
+//         // promises.push(promise)
+
+//         people.forEach((peopleItem, index) => {
+//           var addResponse = peopleObjectStore.add(peopleItem);
+//           addResponse.onsuccess = ((i) => {
+//             return () => {
+//               console.log('added', i);
+//             }
+//           })(index);
+//           addResponse.onerror = (error) => {
+//             console.error('add error', error);
+//           }
+//         });
+
+//         return new Promise(resolve => {
+//           setTimeout(resolve, 2000);
+//         });
+
+//       });
+
+//       return Promise.all(promises)
+//     }
+
+
     var indexedDB = window.indexedDB || window.mozIndexedDB ||
       window.webkitIndexedDB || window.msIndexedDB;
     var request = indexedDB.open('example-db', 1);
@@ -74,7 +177,7 @@
 
     function getById(id) {
       var transaction = db.transaction('people');
-      var objectStore = transaction.objectStore("people");
+      var objectStore = transaction.objectStore('people');
       var request = objectStore.get(id);
       request.onerror = function (event) {
         // Handle errors!
@@ -82,15 +185,45 @@
       request.onsuccess = function (event) {
         // Do something with the request.result!
         if (!request.result) {
-          console.log("Not found!");
+          console.log('Not found!');
         } else {
-          console.log("GET: -> " + request.result.name);
+          console.log('GET -> ' + request.result.name);
+        }
+      };
+    }
+
+    function getByName(name) {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore('people');
+      var index = objectStore.index('by_name');
+      index.get(name).onsuccess = function (event) {
+        console.log('GET_BY_NAME -> ' + event.target.result.email);
+      };
+    }
+
+    //       |.......|
+    //       |.......|
+    // ----> |.......|
+    //       |.......|
+    //       |.......|
+
+    function getAll() {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore('people');
+      var index = objectStore.index('by_name');
+      // Using a normal cursor to grab whole people record objects
+      index.openCursor().onsuccess = function (event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          console.log('GET_ALL -> ' + cursor.key, cursor.value.email);
+          cursor.continue();
         }
       };
     }
 
     setTimeout(() => {
       getById(1);
+      getAll()
     }, 1000)
 
   </script>
