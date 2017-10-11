@@ -184,26 +184,46 @@
       var transaction = db.transaction('people');
       var objectStore = transaction.objectStore('people');
       var request = objectStore.get(id);
-      request.onerror = function (event) {
-        // Handle errors!
-      };
-      request.onsuccess = function (event) {
-        // Do something with the request.result!
-        if (!request.result) {
-          console.log('Not found!');
-        } else {
-          console.log('GET -> ' + request.result.name);
-        }
-      };
+
+      return new Promise((resolve, reject)=> {
+        request.onerror = function (error) {
+          console.error(error);
+          reject(error);
+        };
+        request.onsuccess = function (event) {
+          // Do something with the request.result!
+          if (!request.result) {
+            console.log('Not found!');
+          } else {
+            console.log('GET -> ' + request.result.dni, request.result.name);
+          }
+          resolve(request.result);
+        };
+      });
+
     }
 
     function getByName(name) {
       var transaction = db.transaction('people');
       var objectStore = transaction.objectStore('people');
       var index = objectStore.index('by_name');
-      index.get(name).onsuccess = function (event) {
-        console.log('GET_BY_NAME -> ' + event.target.result.email);
-      };
+      var request = index.get(name)
+
+      return new Promise((resolve, reject)=> {
+        request.onerror = function (error) {
+          console.error(error);
+          reject(error);
+        };
+        request.onsuccess = function (event) {
+          // Do something with the request.result!
+          if (!request.result) {
+            console.log('Not found!');
+          } else {
+            console.log('GET -> ' + request.result.dni, request.result.name);
+          }
+          resolve(request.result);
+        };
+      });
     }
 
     //       |.......|
@@ -227,33 +247,13 @@
     }
 
     function getByGreaterThan(attr, value, strict, reverse) {
-      var transaction = db.transaction('people');
-      var objectStore = transaction.objectStore('people');
-      var index = objectStore.index('by_' + attr);
-
       var keyRange = IDBKeyRange.lowerBound(value, strict);
-      index.openCursor(keyRange, reverse ? 'prev' : undefined).onsuccess = function (event) {
-        var cursor = event.target.result;
-        if (cursor) {
-          console.log('GET_UPPER -> ' + cursor.key, cursor.value.name, cursor.value.email);
-          cursor.continue();
-        }
-      };
+      return getByKeyRange(attr, value, strict, reverse, keyRange)
     }
 
     function getByLowerThan(attr, value, strict, reverse) {
-      var transaction = db.transaction('people');
-      var objectStore = transaction.objectStore('people');
-      var index = objectStore.index('by_' + attr);
-
       var keyRange = IDBKeyRange.upperBound(value, strict);
-      index.openCursor(keyRange, reverse ? 'prev' : undefined).onsuccess = function (event) {
-        var cursor = event.target.result;
-        if (cursor) {
-          console.log('GET_UPPER -> ' + cursor.key, cursor.value.name, cursor.value.email);
-          cursor.continue();
-        }
-      };
+      return getByKeyRange(attr, value, strict, reverse, keyRange)
     }
 
     function getByNameGreaterThan(value, strict, reverse) {
@@ -264,36 +264,52 @@
       return getByLowerThan('name', strict, reverse)
     }
 
-    // // Only match "Donna"
-    // var singleKeyRange = IDBKeyRange.only("Donna");
-    // // Match anything past "Bill", including "Bill"
-    // var lowerBoundKeyRange = IDBKeyRange.lowerBound("Bill");
-    // // Match anything past "Bill", but don't include "Bill"
-    // var lowerBoundOpenKeyRange = IDBKeyRange.lowerBound("Bill", true);
-    // // Match anything up to, but not including, "Donna"
-    // var upperBoundOpenKeyRange = IDBKeyRange.upperBound("Donna", true);
-    // // Match anything between "Bill" and "Donna", but not including "Donna"
-    // var boundKeyRange = IDBKeyRange.bound("Bill", "Donna", false, true);
+    function getByKeyRange(attr, value, strict, reverse, keyRange) {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore('people');
+      var index = objectStore.index('by_' + attr);
 
+      return new Promise((resolve, reject) => {
+        var response = index.openCursor(keyRange, reverse ? 'prev' : undefined)
+        response.onsuccess = function (event) {
+          var cursor = event.target.result;
+          if (cursor) {
+            console.log('GET_BY_KEY -> ' + cursor.key, cursor.value.name, cursor.value.email);
+            cursor.continue();
+          } else {
+            resolve();
+          }
+        };
 
-    // objectStore.openCursor(boundKeyRange, "prev").onsuccess = function (event) {
-    //   var cursor = event.target.result;
-    //   if (cursor) {
-    //     // Do something with the entries.
-    //     cursor.continue();
-    //   }
-    // };
-    // index.openKeyCursor(null, "nextunique").onsuccess = function (event) {
-    //   var cursor = event.target.result;
-    //   if (cursor) {
-    //     // Do something with the entries.
-    //     cursor.continue();
-    //   }
-    // };
+        response.onerror = (error) => {
+          console.error(error);
+          reject(error)
+        }
+      })
 
+    }
+
+    function update(person) {
+      return new Promise((resolve, reject) => {
+        var objectStore = db.transaction(["people"], "readwrite").objectStore("people");
+        var requestUpdate = objectStore.put(person);
+
+        requestUpdate.onerror = (error) => {
+          console.error(error);
+          reject(error);
+        };
+
+        requestUpdate.onsuccess = () => {
+          resolve(person);
+        };
+      })
+    }
 
     setTimeout(() => {
-      getById(1);
+      getById(1).then((person) => {
+        person.dni = 123456;
+        return update(person);
+      }).then((person) => console.log('updated!', person));
       // getAll()
       // getByNameGreaterThan('Leanne Graham', true)
       // getByGreaterThan('name', 'Leanne Graham', false, true)
