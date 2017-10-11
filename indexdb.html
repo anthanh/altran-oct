@@ -12,107 +12,106 @@
 
 
   <script>
+    // Promise version
+    // function initDB(name, version) {
+    //       name = name || 'example-db';
+    //       version = version || 1;
+    //       return new Promise((resolve, reject) => {
+    //         var indexedDB = window.indexedDB || window.mozIndexedDB ||
+    //           window.webkitIndexedDB || window.msIndexedDB;
+    //         var request = indexedDB.open(name, version);
 
-// Promise version
-// function initDB(name, version) {
-//       name = name || 'example-db';
-//       version = version || 1;
-//       return new Promise((resolve, reject) => {
-//         var indexedDB = window.indexedDB || window.mozIndexedDB ||
-//           window.webkitIndexedDB || window.msIndexedDB;
-//         var request = indexedDB.open(name, version);
+    //         request.onsuccess = function (e) {
+    //           console.log('Base de datos cargada correctamente');
+    //           db = request.result;
 
-//         request.onsuccess = function (e) {
-//           console.log('Base de datos cargada correctamente');
-//           db = request.result;
+    //           fetch('https://jsonplaceholder.typicode.com/users')
+    //             .then((response) => response.json())
+    //             .then(saveElements)
+    //             .then(resolve)
+    //             .catch(error => reject(error));
 
-//           fetch('https://jsonplaceholder.typicode.com/users')
-//             .then((response) => response.json())
-//             .then(saveElements)
-//             .then(resolve)
-//             .catch(error => reject(error));
+    //         };
+    //         request.onerror = function (error) {
+    //           console.log('Error cargando la base de datos');
+    //           reject(error)
+    //         };
 
-//         };
-//         request.onerror = function (error) {
-//           console.log('Error cargando la base de datos');
-//           reject(error)
-//         };
+    //         request.onupgradeneeded = function (e) {
+    //           var db = event.target.result;
+    //           var objectStore = db.createObjectStore("people", {
+    //             keyPath: 'id',
+    //             autoIncrement: true
+    //           });
+    //           objectStore.createIndex('by_name', 'name', {
+    //             unique: false
+    //           });
+    //           objectStore.createIndex('by_dni', 'dni', {
+    //             unique: true
+    //           });
+    //           // objectStore.createIndex('by_email', 'email', {
+    //           //   unique: true
+    //           // });
+    //           // objectStore.createIndex('by_peopleId', 'peopleId', {
+    //           //   unique: true
+    //           // });
+    //         };
 
-//         request.onupgradeneeded = function (e) {
-//           var db = event.target.result;
-//           var objectStore = db.createObjectStore("people", {
-//             keyPath: 'id',
-//             autoIncrement: true
-//           });
-//           objectStore.createIndex('by_name', 'name', {
-//             unique: false
-//           });
-//           objectStore.createIndex('by_dni', 'dni', {
-//             unique: true
-//           });
-//           // objectStore.createIndex('by_email', 'email', {
-//           //   unique: true
-//           // });
-//           // objectStore.createIndex('by_peopleId', 'peopleId', {
-//           //   unique: true
-//           // });
-//         };
+    //       })
+    //     }
 
-//       })
-//     }
+    //     function saveElements(json) {
+    //       var promises = [];
 
-//     function saveElements(json) {
-//       var promises = [];
+    //       var people = json;
+    //       var transaction = db.transaction('people', 'readwrite');
+    //       // transaction.oncomplete = function (event) {
+    //       //   alert('All done!');
+    //       // };
+    //       // Tratar de capturar al menos los errores
+    //       // transaction.onerror = function (event) {
+    //       //   // handle errors!
+    //       // };
+    //       var peopleObjectStore = transaction.objectStore('people');
 
-//       var people = json;
-//       var transaction = db.transaction('people', 'readwrite');
-//       // transaction.oncomplete = function (event) {
-//       //   alert('All done!');
-//       // };
-//       // Tratar de capturar al menos los errores
-//       // transaction.onerror = function (event) {
-//       //   // handle errors!
-//       // };
-//       var peopleObjectStore = transaction.objectStore('people');
+    //       people.forEach((peopleItem, index) => {
 
-//       people.forEach((peopleItem, index) => {
+    //         // var promise = new Promise((resolve, reject) => {
+    //         //   var addResponse = peopleObjectStore.add(peopleItem);
+    //         //   addResponse.onsuccess = ((i) => {
+    //         //     return () => {
+    //         //       console.log('added', i);
+    //         //       resolve();
+    //         //     }
+    //         //   })(index);
+    //         //   addResponse.onerror = (error) => {
+    //         //     console.error('add error', error);
+    //         //     reject(error);
+    //         //   }
+    //         // });
 
-//         // var promise = new Promise((resolve, reject) => {
-//         //   var addResponse = peopleObjectStore.add(peopleItem);
-//         //   addResponse.onsuccess = ((i) => {
-//         //     return () => {
-//         //       console.log('added', i);
-//         //       resolve();
-//         //     }
-//         //   })(index);
-//         //   addResponse.onerror = (error) => {
-//         //     console.error('add error', error);
-//         //     reject(error);
-//         //   }
-//         // });
+    //         // promises.push(promise)
 
-//         // promises.push(promise)
+    //         people.forEach((peopleItem, index) => {
+    //           var addResponse = peopleObjectStore.add(peopleItem);
+    //           addResponse.onsuccess = ((i) => {
+    //             return () => {
+    //               console.log('added', i);
+    //             }
+    //           })(index);
+    //           addResponse.onerror = (error) => {
+    //             console.error('add error', error);
+    //           }
+    //         });
 
-//         people.forEach((peopleItem, index) => {
-//           var addResponse = peopleObjectStore.add(peopleItem);
-//           addResponse.onsuccess = ((i) => {
-//             return () => {
-//               console.log('added', i);
-//             }
-//           })(index);
-//           addResponse.onerror = (error) => {
-//             console.error('add error', error);
-//           }
-//         });
+    //         return new Promise(resolve => {
+    //           setTimeout(resolve, 2000);
+    //         });
 
-//         return new Promise(resolve => {
-//           setTimeout(resolve, 2000);
-//         });
+    //       });
 
-//       });
-
-//       return Promise.all(promises)
-//     }
+    //       return Promise.all(promises)
+    //     }
 
 
     var indexedDB = window.indexedDB || window.mozIndexedDB ||
@@ -126,6 +125,12 @@
 
       fetch('https://jsonplaceholder.typicode.com/users')
         .then((response) => response.json())
+        .then((response) => {
+          return response.map(item => {
+            item.dni = Math.floor((Math.random() * 999999) + 1);
+            return item;
+          })
+        })
         .then(saveElements);
 
     };
@@ -221,9 +226,78 @@
       };
     }
 
+    function getByGreaterThan(attr, value, strict, reverse) {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore('people');
+      var index = objectStore.index('by_' + attr);
+
+      var keyRange = IDBKeyRange.lowerBound(value, strict);
+      index.openCursor(keyRange, reverse ? 'prev' : undefined).onsuccess = function (event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          console.log('GET_UPPER -> ' + cursor.key, cursor.value.name, cursor.value.email);
+          cursor.continue();
+        }
+      };
+    }
+
+    function getByLowerThan(attr, value, strict, reverse) {
+      var transaction = db.transaction('people');
+      var objectStore = transaction.objectStore('people');
+      var index = objectStore.index('by_' + attr);
+
+      var keyRange = IDBKeyRange.upperBound(value, strict);
+      index.openCursor(keyRange, reverse ? 'prev' : undefined).onsuccess = function (event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          console.log('GET_UPPER -> ' + cursor.key, cursor.value.name, cursor.value.email);
+          cursor.continue();
+        }
+      };
+    }
+
+    function getByNameGreaterThan(value, strict, reverse) {
+      return getByGreaterThan('name', strict, reverse)
+    }
+
+    function getByNameLowerThan(value, strict, reverse) {
+      return getByLowerThan('name', strict, reverse)
+    }
+
+    // // Only match "Donna"
+    // var singleKeyRange = IDBKeyRange.only("Donna");
+    // // Match anything past "Bill", including "Bill"
+    // var lowerBoundKeyRange = IDBKeyRange.lowerBound("Bill");
+    // // Match anything past "Bill", but don't include "Bill"
+    // var lowerBoundOpenKeyRange = IDBKeyRange.lowerBound("Bill", true);
+    // // Match anything up to, but not including, "Donna"
+    // var upperBoundOpenKeyRange = IDBKeyRange.upperBound("Donna", true);
+    // // Match anything between "Bill" and "Donna", but not including "Donna"
+    // var boundKeyRange = IDBKeyRange.bound("Bill", "Donna", false, true);
+
+
+    // objectStore.openCursor(boundKeyRange, "prev").onsuccess = function (event) {
+    //   var cursor = event.target.result;
+    //   if (cursor) {
+    //     // Do something with the entries.
+    //     cursor.continue();
+    //   }
+    // };
+    // index.openKeyCursor(null, "nextunique").onsuccess = function (event) {
+    //   var cursor = event.target.result;
+    //   if (cursor) {
+    //     // Do something with the entries.
+    //     cursor.continue();
+    //   }
+    // };
+
+
     setTimeout(() => {
       getById(1);
-      getAll()
+      // getAll()
+      // getByNameGreaterThan('Leanne Graham', true)
+      // getByGreaterThan('name', 'Leanne Graham', false, true)
+      getByLowerThan('dni', 340484, false)
     }, 1000)
 
   </script>
