@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .container {
+      width: 100%;
+      background: grey;
+      height: 700px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box-1 {
+      background: pink;
+      flex-grow: 2;
+    }
+
+    .box-2 {
+      background: lightblue;
+      flex-grow: 2;
+    }
+
+    .box-3 {
+      background: lightgreen;
+    }
+
+    .box-4 {
+      background: orange;
+    }
+
+    .box-5 {
+      background: teal;
+    }
+
+    @media screen and (min-width: 680px) {
+      .container {
+        flex-direction: row;
+      }
+      .box-1 {
+        background: pink;
+        order: 2;
+
+      }
+      .box-2 {
+        background: lightblue;
+        order: 3;
+      }
+      .box-3 {
+        background: lightgreen;
+        order: 1;
+      }
+      .box-4 {
+        background: orange;
+        order: 5;
+      }
+      .box-5 {
+        background: teal;
+        order: 4;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="box box-1">1</div>
+    <div class="box box-2">2</div>
+    <div class="box box-3">3</div>
+    <div class="box box-4">4</div>
+    <div class="box box-5">5</div>
+  </div>
+
+
+</body>
+
+</html>

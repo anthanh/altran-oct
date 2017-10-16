@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px 0;
+    }
+
+    .bill {
+      height: 90vh;
+      border: 3px solid black;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .description {
+      text-align: center;
+    }
+
+    ul {
+      padding: 0;
+      flex-grow: 1;
+      border-bottom: 1px dashed black;
+    }
+
+    .bill-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 15px;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 15px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <article class="bill">
+
+    <div class="description">
+      <h1>Company Name S.L.</h1>
+      <p>CIF: B-1234567</p>
+    </div>
+
+    <ul>
+      <li class="bill-item">
+        <p>description item 1</p>
+        <p>14 €</p>
+      </li>
+      <li class="bill-item">
+        <p>description item 2</p>
+        <p>10 €</p>
+      </li>
+      <li class="bill-item">
+        <p>description item 3</p>
+        <p>7 €</p>
+      </li>
+      <li class="bill-item">
+        <p>description item 4</p>
+        <p>3 €</p>
+      </li>
+    </ul>
+
+    <div class="total">
+      <strong>Total:</strong>
+      <p>34 €</p>
+    </div>
+
+  </article>
+
+</body>
+
+</html>
