@@ -217,7 +217,23 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            60%
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+            style="width: 60%;">
+            60%
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+            style="width: 60%;">
             60%
           </div>
         </div>
@@ -229,16 +245,18 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
-    function setProgress(percentage) {
-      $('.progress-bar').css('width', percentage + '%');
-      $('.progress-bar').html(percentage + '%');
+    function setProgress(progressElem, percentage) {
+      progressElem.css('width', percentage + '%');
+      progressElem.html(percentage + '%');
       // document.querySelector('.progress-bar').style.width = '20%'
       // document.querySelector('.progress-bar').style.innerHTML = '20%'
     }
 
     setInterval(() => {
-      setProgress(Math.floor((Math.random() * 100) + 1))
-    }, 3000)
+      setProgress($('.progress-bar-primary'), Math.floor((Math.random() * 100) + 1))
+      setProgress($('.progress-bar-success'), Math.floor((Math.random() * 100) + 1))
+      setProgress($('.progress-bar-danger'), Math.floor((Math.random() * 100) + 1))
+    }, 2000)
 
   </script>
 
