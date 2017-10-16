@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<style>
+  picture, img {
+    max-width: 100%;
+    width: 100%;
+    height: 300px;
+    display: block;
+  }
+</style>
+
+<body>
+
+  <picture>
+    <source srcset="https://dummyimage.com/240x100/c9c9c9/ffffff.png" media="(max-width: 511px)">
+    <source srcset="https://dummyimage.com/512x200/c9c9c9/ffffff.png" media="(min-width: 512px) and (max-width: 719px)">
+    <source srcset="https://dummyimage.com/1024x400/c9c9c9/ffffff.png" media="(min-width: 720px)">
+    <img src="https://dummyimage.com/1024x400/c9c9c9/ffffff.png" alt="banner">
+  </picture>
+
+</body>
+
+</html>
