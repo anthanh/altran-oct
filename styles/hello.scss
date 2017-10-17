@@ -1,0 +1,31 @@
+// node-sass styles/hello.scss > styles/hello.css
+$primary: blue;
+$base-gap: 24px;
+body {
+  color: $primary;
+}
+
+.card {
+  padding: 0 0 $base-gap * 2 0;
+}
+
+.bg-success {
+  background-color: $primary;
+}
+
+.nav {
+  .nav-item {
+    .nav-icon {}
+    // modifier
+    &.active {}
+    // custom parent selector
+    body & .caption {
+      display: block;
+    }
+  }
+}
+
+// .nav-item.active {}
+.nav-logo {}
+
+.nav-right {}
