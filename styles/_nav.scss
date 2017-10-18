@@ -1,6 +1,6 @@
 .nav {
   background: $white;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: $box-shadow;
   height: 100%;
   position: fixed;
   left: 0;
@@ -39,7 +39,7 @@ header {
     display: block;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(010, 10, 10, 0.1);
+    background-color: $black;
     position: fixed;
     top: 0;
     left: 0;
@@ -93,7 +93,7 @@ header {
       bottom: 20px;
       right: 20px;
       font-size: 2em;
-      background-color: white;
+      background-color: $white;
     }
   }
 }
