@@ -1,0 +1,44 @@
+.images {
+  .image-list {
+    padding: 0;
+    text-align: center;
+  }
+  .image-item {
+    list-style: none;
+    display: inline-block;
+    width: 90%;
+    position: relative;
+    &:after {
+      background-color: $grey-base;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      opacity: 0;
+      transition: opacity $timing-base ease-in-out;
+    }
+    &:hover:after {
+      opacity: 1;
+    }
+    &:hover img {
+      transform: scale(1.2);
+    }
+    img {
+      object-fit: cover;
+      object-position: center center;
+      height: 100%;
+      width: 100%;
+      transform: scale(1);
+      transition: transform $timing-base ease-in;
+    }
+    @include mobile {
+      height: 200px;
+      overflow: hidden;
+      width: 200px;
+    }
+  }
+}
+

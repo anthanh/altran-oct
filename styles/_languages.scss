@@ -1,0 +1,11 @@
+.languages-list {
+  margin: 0 auto;
+  th {
+    color: $grey-lighter;
+    /* color: $white; */
+  }
+  td,
+  th {
+    padding: 10px;
+  }
+}

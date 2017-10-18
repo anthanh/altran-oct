@@ -1,4 +1,4 @@
-#personal-data {
+.personal-data {
   background-color: $bg-personal;
   text-align: center;
   ul {
@@ -10,6 +10,9 @@
       margin-right: 5px;
     }
   }
+  @include mobile {
+    text-align: left;
+  }
 }
 
 .photo {
@@ -17,15 +20,7 @@
   height: 80px;
   width: 80px;
   box-shadow: $box-shadow;
-}
-
-@include mobile {
-  #personal-data {
-    text-align: left;
-  }
-
-  /* desktop */
-  .photo {
+  @include mobile {
     height: 100px;
     width: 100px;
     float: right;

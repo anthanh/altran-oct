@@ -1,0 +1,18 @@
+$grid-num-cols: 12;
+
+.col-base {
+  position: relative;
+  min-height: 1px;
+  padding: 0;
+  float: left;
+}
+
+@for $i from 1 through $grid-num-cols {
+  .col-#{$i} {
+    @extend .col-base;
+    width: ($i * 100%) / $grid-num-cols;
+  }
+  .col-offset-#{$i} {
+    margin-left: ($i * 100%) / $grid-num-cols;
+  }
+}

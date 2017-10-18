@@ -1,0 +1,63 @@
+html {
+  font-family: $font-family-base;
+}
+
+body {
+  margin: 0;
+}
+
+body>header {
+  background: $grey-light;
+  padding: $medium-gap;
+}
+
+p {
+  line-height: 1.2em;
+  word-spacing: 5px;
+}
+
+section {
+  padding-bottom: $base-gap * 2;
+}
+
+section>header {
+  text-align: center;
+  padding: 5px;
+  margin-bottom: $medium-gap;
+}
+
+h1 {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+h1 {
+  color: $black;
+  text-align: center;
+}
+
+video {
+  display: block;
+}
+
+p::first-letter {
+  font-size: 1.5em;
+}
+
+p::first-line {
+  font-weight: bold;
+}
+
+p::selection {
+  color: $white;
+  background-color: lighten($green, 50%);
+}

@@ -1,0 +1,91 @@
+input,
+textarea {
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+// .form-input input.invalid,
+// .form-input textarea.invalid,
+// .form-input select.invalid {
+//   border-color: red;
+// }
+.form-input {
+  width: 90%;
+  margin: 15px auto;
+  input,
+  textarea,
+  select {
+    &.invalid {
+      border-color: $red;
+    }
+    &.success {
+      border-color: $green;
+    }
+  }
+  label {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  input,
+  textarea {
+    width: 90%;
+    padding: 5px;
+    border: 2px solid $grey-lighter;
+    border-radius: 6px;
+    &:hover {
+      border-style: dashed;
+    }
+    &:hover {
+      border-color: lighten($blue, 50%);
+    }
+  }
+}
+
+select {
+  width: 90%;
+  border: 2px solid $grey-lighter;
+  border-radius: 6px;
+}
+
+.form-input-check {
+  display: inline-block;
+  width: auto;
+  input {
+    width: auto;
+    &[type="radio"] {
+      font-weight: bold;
+    }
+  }
+}
+
+form button {
+  border: 2px solid $grey-base;
+  transition: border-color $timing-base, background-color $timing-base, color $timing-base;
+  /* transition: all $timing-base; */
+  border-radius: 5px;
+  &:hover {
+    border-color: lighten($green, 50%);
+    background-color: $green;
+    color: $white;
+  }
+}
+
+@include mobile {
+  .form-input {
+    width: 70%;
+    margin: 5px auto;
+  }
+  .form-input label {
+    width: 70px;
+    text-align: right;
+  }
+  .form-input input,
+  .form-input textarea {
+    width: 70%;
+  }
+  select {
+    width: 74%;
+  }
+}

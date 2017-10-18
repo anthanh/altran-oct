@@ -1,5 +1,17 @@
+// base
 @import 'variables';
+@import 'fonts';
+@import 'grid';
 @import 'mixins';
 @import 'responsive';
+@import 'forms';
+@import 'layout';
+@import 'links';
+// sections
+@import 'header';
 @import 'personal';
 @import 'resume';
+@import 'images';
+@import 'languages';
+@import 'video';
+@import 'map';
