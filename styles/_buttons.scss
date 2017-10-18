@@ -1,8 +1,9 @@
-$buttons-types: primary,
-success,
-info,
-alert,
-danger;
+// $buttons-types:
+// primary,
+// success,
+// info,
+// alert,
+// danger;
 form button:hover {
   border-color: lightgreen;
   background-color: green;
@@ -13,10 +14,19 @@ form button:hover {
   border: 2px solid grey;
   transition: border-color $timing-base, background-color $timing-base, color $timing-base;
   border-radius: 5px;
+  color: $black;
 }
 
-@each $button-type in $buttons-types {
-  .btn-#{$button-type} {
-    background: url('/#{$button-type}.png');
+// @each $button-type in $buttons-types {
+//   .btn-#{$button-type} {
+//     background: url('/#{$button-type}.png');
+//   }
+// }
+$buttons-types: (primary: $primary, success: $success, info: $info, alert: $alert, danger: $danger);
+
+@each $type, $value in $buttons-types {
+  .btn-#{$type} {
+    background-color: lighten($value, 10%);
+    border-color: $value;
   }
 }
