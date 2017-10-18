@@ -1,0 +1,35 @@
+#personal-data {
+  background-color: $bg-personal;
+  text-align: center;
+  ul {
+    color: $inverse-text-color;
+    text-align: left;
+    strong:after {
+      content: ":";
+      display: inline;
+      margin-right: 5px;
+    }
+  }
+}
+
+.photo {
+  @include circle;
+  height: 80px;
+  width: 80px;
+  box-shadow: $box-shadow;
+}
+
+@include mobile {
+  #personal-data {
+    text-align: left;
+  }
+
+  /* desktop */
+  .photo {
+    height: 100px;
+    width: 100px;
+    float: right;
+    margin-right: 10px;
+    transform: translate(-20px, 25px) rotate(90deg);
+  }
+}
