@@ -1,13 +1,20 @@
 var assert = require('assert');
 var calc = require('./calc.js');
 
-describe('Calc', function () {
+describe('Calc', () => {
 
-  it('is not null', function () {
+  it('async test', (done) => {
+    setTimeout(() => {
+      assert.equal(false, true);
+      done();
+    }, 1500);
+  });
+
+  it('is not null', () => {
     assert.equal(!!calc, true);
   });
 
-  describe('al sumar números', function () {
+  describe('al sumar números', () => {
     it('si no va con parámetros, devuelve NaN', () => {
       assert.equal(calc.suma(), calc.NAN);
     });
@@ -30,14 +37,14 @@ describe('Calc', function () {
     });
   });
 
-  describe('al restar números', function () {
+  describe('al restar números', () => {
     it('si no va con parámetros, devuelve NaN', () => {});
     it('si falta algún parámetro, devuelve NaN', () => {});
     it('si algun parámetro es no numérico, devuelve NaN', () => {});
     it('si ambos parámetros son numérico, devuelve su resta', () => {});
   });
 
-  describe('al multiplicar números', function () {
+  describe('al multiplicar números', () => {
     it('si no va con parámetros, devuelve NaN', () => {});
     it('si falta algún parámetro, devuelve NaN', () => {});
     it('si algun parámetro es no numérico, devuelve NaN', () => {});
