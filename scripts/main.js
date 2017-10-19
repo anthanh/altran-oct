@@ -488,7 +488,7 @@ for (var i = 0; i <= 5; i++) {
 
     // this.index = i iteración correcta!
 
-    return function() {
+    return function () {
       // this diferente!
       console.log(`clicked ${index} button`);
     };
@@ -531,7 +531,7 @@ for (var i = 0; i <= 5; i++) {
 
 // 3º : ejemplo
 function sumaNum(x) {
-  return function(y) {
+  return function (y) {
     return x + y;
   };
 }
@@ -542,7 +542,7 @@ var suma10 = sumaNum(10);
 // 4º : ejemplo
 function increment() {
   var count = 0;
-  return function() {
+  return function () {
     return count = count + 1;
     // return count += 1;
     // return ++count;
@@ -556,17 +556,16 @@ function myService(enpoint) {
   var _apiEndpoint = endpoint || 'http://mydomain.com/';
 
   return {
-    getUsers: function() {
+    getUsers: function () {
       return _apiEndpoint + 'users';
     },
-    getBooks: function() {
+    getBooks: function () {
       return _apiEndpoint + 'books';
     },
-    createUser: function(user) {
+    createUser: function (user) {
       console.log(_apiEndpoint + user);
     }
   };
-
 }
 
 var service = myService('http://otherdomain.com');
@@ -575,18 +574,26 @@ service.getUsers()
 
 
 
-var timeout = setTimeout(() => {  console.log('TIMEOUT!')  }, 5000)
+var timeout = setTimeout(() => {
+  console.log('TIMEOUT!')
+}, 5000)
 clearTimeout(timeout)
 
-var inverval = setInterval(() => {  console.log('INVERVAL!')  }, 1000)
+var inverval = setInterval(() => {
+  console.log('INVERVAL!')
+}, 1000)
 clearInterval(inverval)
 
 
-(function() {
+(function () {
   console.log(1);
-  setTimeout(() => { console.log('2') }, 1000);
+  setTimeout(() => {
+    console.log('2')
+  }, 1000);
   // defer next tick (hack)
-  setTimeout(() => { console.log('3') }, 0);
+  setTimeout(() => {
+    console.log('3')
+  }, 0);
   console.log(4);
 })();
 
@@ -601,16 +608,16 @@ undefined
 
 
 
-for(var i = 0; i < 5; i++) {
+for (var i = 0; i < 5; i++) {
   setTimeout(() => console.log(i), i * 1000);
 }
 
-for(var i = 0; i < 5; i++) {
-  setTimeout((function(index) {
-    return function() {
+for (var i = 0; i < 5; i++) {
+  setTimeout((function (index) {
+    return function () {
       console.log(index)
     };
-  })(i) , i * 1000);
+  })(i), i * 1000);
 }
 
 
@@ -630,19 +637,19 @@ var promise = $.ajax({
   // url: 'http://jsonplaceholder.typicode.com/posts'
 });
 
-promise.then(function(data) {
+promise.then(function (data) {
   console.log(data[0], data.length);
-}).catch(function(error) {
+}).catch(function (error) {
   console.error(error);
 });
 
-var timeoutPromise = new Promise(function(resolve, reject) {
-  setTimeout(function() {
+var timeoutPromise = new Promise(function (resolve, reject) {
+  setTimeout(function () {
     resolve('valor');
   }, 5000);
 });
 
-timeoutPromise.then(function(data) {
+timeoutPromise.then(function (data) {
   console.log('data', data); // => valor
 })
 
@@ -652,10 +659,10 @@ function myServiceMock(enpoint) {
   var books = [1, 2, 3, 4];
 
   return {
-    getUsers: function() {
+    getUsers: function () {
       return Promise.resolve(users);
     },
-    getBooks: function() {
+    getBooks: function () {
       return Promise.resolve(books);
     }
   };
@@ -673,13 +680,13 @@ var promise3 = Promise.resolve();
 var promise4 = Promise.resolve();
 
 
-var parallelPromises = Promise.all([promise1, promise2, promise3]).then(function(responses) {
+var parallelPromises = Promise.all([promise1, promise2, promise3]).then(function (responses) {
   var response1 = responses[0];
   var response2 = responses[1];
   var response3 = responses[2];
   return promise4;
   // ALL PROMISE SUCCESS!!!!!
-}).catch(function(error) {
+}).catch(function (error) {
   // SOME HAS FAILED !!!!
   return Promise.reject(error)
 })
@@ -695,34 +702,40 @@ var promise7 = Promise.resolve();
 
 promise5.then(() => {
   return promise6.then(() => {
-      return promise7
+    return promise7
   })
 })
 
 
 
 var finalPromise = promise5
-.then(promise6)
-.then(promise7)
-.then((data7) => {
-  // ==>>>>>>>>> TODO HA IDO BIEN
-  return { ok: data.ok, status: data.status };
-}).catch((error) => {
-  console.error(error)
-  return Promise.reject(error);
-})
+  .then(promise6)
+  .then(promise7)
+  .then((data7) => {
+    // ==>>>>>>>>> TODO HA IDO BIEN
+    return {
+      ok: data.ok,
+      status: data.status
+    };
+  }).catch((error) => {
+    console.error(error)
+    return Promise.reject(error);
+  })
 
 var finalPromise = promise5.then(() => {
   return promise6.catch((error) => {
     console.error(error);
     // hago cosas con el error
-    return Promise.reject(error);// <= propagar el error de nuevo
+    return Promise.reject(error); // <= propagar el error de nuevo
   });
 }).then(() => {
   return promise7
-}).then(function(data7) {
+}).then(function (data7) {
   // ==>>>>>>>>> TODO HA IDO BIEN
-  return { ok: data.ok, status: data.status };
+  return {
+    ok: data.ok,
+    status: data.status
+  };
 }).catch((error) => {
   console.error(error)
   return Promise.reject(error);
@@ -751,8 +764,8 @@ parallelPromises.then(() => finalPromise)
 $.ajax({
   dataType: 'json',
   url: 'http://noexiste.dominio',
-  complete: function() {},
-  error: function() {},
+  complete: function () {},
+  error: function () {},
   // url: 'http://jsonplaceholder.typicode.com/posts'
 })
 
@@ -771,3 +784,62 @@ $.ajax({
 // }
 
 // login('pepe@gmail.com', 'facebook')
+
+
+
+
+
+suma = (a, b) => {
+  return a + b;
+}
+
+stub(suma, 5)
+
+suma(2, 7) => 5
+
+var estoEsUnaFuncionAsyncrona;
+
+stub(estoEsUnaFuncionAsyncrona, Promise.resolve(5))
+
+
+estoEsUnaFuncionAsyncrona.then(value => console.log(value))
+
+
+// BDD
+describe('Como usaurio', () => {
+  describe('al ver las tarifas', () => {
+    describe('si tiene stock', () => {
+      it('puedo añadirlo al carrito', () => {
+        // test code
+      })
+    })
+  })
+  describe('si entro en ofertas', () => {
+    it('puedo ver las ofertas de día', () => {
+
+    })
+  })
+})
+
+
+
+// TDD
+describe('En el servicio de autenticación', () => {
+  describe('si no estoy autenticado', () => {
+    describe('si envío credenciales correctas', () => {
+      it('logeo correctamente', () => {
+        // test code
+      })
+      describe('tengo el token exporado', () => {
+        it('develve error', () => {
+          // test code
+        })
+      })
+    })
+    describe('si no envío credenciales correctas', () => {
+      it('no logeo correctamente', () => {
+        // test code
+      })
+    })
+  })
+})
