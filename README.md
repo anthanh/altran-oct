@@ -18,7 +18,8 @@ npm install -g node-sass
 * All tests
 
 ```
-npm run test
+webdriver-manager start   # in one terminal
+npm run test              # in another terminal
 ```
 
 * Unit tests
@@ -30,7 +31,8 @@ npm run test:unit
 * E2E tests
 
 ```
-npm run test:e2e
+webdriver-manager start   # in one terminal
+npm run test:e2e          # in another terminal
 ```
 
 ## How to build this project
