@@ -1,0 +1,15 @@
+{
+  "name": "altran-tests",
+  "version": "0.0.1",
+  "description": "Example unit test",
+  "main": "test.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test.js",
+    "start": "npm run test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
+}

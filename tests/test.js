@@ -3,7 +3,7 @@ var calc = require('./calc.js');
 
 describe('Calc', () => {
 
-  it('async test', (done) => {
+  xit('async test', (done) => {
     setTimeout(() => {
       assert.equal(false, true);
       done();
