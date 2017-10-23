@@ -23,13 +23,14 @@
       }
     });
 
-    if (event.target.checkValidity()) {
-      var data = {};
-      $('form input, form textarea, form select').each((index, elemItem) => {
-        data[elemItem.name] = $(elemItem).val();
-      });
+    var data = {};
+    $('form input, form textarea, form select').each((index, elemItem) => {
+      data[elemItem.name] = $(elemItem).val();
+    });
+    console.log('form info', data);
 
-      console.log(data);
+    if (event.target.checkValidity()) {
+
 
       return;
 
