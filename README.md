@@ -15,8 +15,22 @@ npm install -g node-sass
 
 ## How to run this tests
 
+* All tests
+
 ```
 npm run test
+```
+
+* Unit tests
+
+```
+npm run test:unit
+```
+
+* E2E tests
+
+```
+npm run test:e2e
 ```
 
 ## How to build this project

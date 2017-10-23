@@ -4,7 +4,9 @@
   "description": "Example project for Altran sessions",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests/*.js",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "./node_modules/mocha/bin/mocha tests/*.js",
+    "test:e2e": "protractor e2e/protractor.conf.js",
     "sass": "node-sass styles/cv.scss > styles/cv.css",
     "build": "npm run sass"
   },
