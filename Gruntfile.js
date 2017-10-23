@@ -18,7 +18,7 @@ module.exports = function (grunt) {
       options: {
         port: appConfig.port,
         // IP comodín: localhost|192.1.168.123|179.54.12.0
-        hostname: appConfig.port,
+        hostname: appConfig.ip,
         // socket para refrescar browser
         livereload: true,
         // mantener server vivo siempre
