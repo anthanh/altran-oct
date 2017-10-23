@@ -4,7 +4,8 @@
   "description": "Example project for Altran sessions",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha tests/*.js"
+    "test": "./node_modules/mocha/bin/mocha tests/*.js",
+    "sass": "node-sass styles/cv.scss > styles/cv.css"
   },
   "repository": {
     "type": "git",
