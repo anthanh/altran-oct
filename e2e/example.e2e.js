@@ -1,11 +1,11 @@
-browser.waitForAngularEnabled(false)
+browser.waitForAngularEnabled(false);
 
 waitForVisibleElement = (selector, timeout = 5000) => {
   return browser.wait(
     protractor.until.elementLocated(by.css(selector)),
     timeout
-  )
-}
+  );
+};
 
 describe('google page', () => {
   it('can submit a search', (done) => {
