@@ -6,27 +6,30 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   var appConfig = {
-    // port:
-    // testPort:
-    // dist: 'dist',
-    // src: '.'
-  }
+    port: 9000,
+    ip: '0.0.0.0',
+    src: '.'
+  };
 
   grunt.initConfig({
     appConfig: appConfig,
 
     connect: {
       options: {
-        port: 9000,
-        // localhost|192.1.168.123|179.54.12.0
-        hostname: '0.0.0.0',
+        port: appConfig.port,
+        // IP comodín: localhost|192.1.168.123|179.54.12.0
+        hostname: appConfig.port,
+        // socket para refrescar browser
         livereload: true,
+        // mantener server vivo siempre
         keepalive: true
       },
       server: {
         options: {
+          // abrir browser
           open: true,
-          base: '.'
+          // definir qué carpetas servir
+          base: appConfig.src
         }
       }
     }

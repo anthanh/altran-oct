@@ -13,6 +13,26 @@ npm install
 npm install -g node-sass
 ```
 
+
+## How to start this project
+
+```
+npm run start
+```
+
+* Alternatively
+
+```
+grunt
+```
+
+
+## How to build this project
+
+```
+npm run build
+```
+
 ## How to run this tests
 
 * All tests
@@ -35,10 +55,6 @@ webdriver-manager start   # in one terminal
 npm run test:e2e          # in another terminal
 ```
 
-## How to build this project
 
-```
-npm run build
-```
 
 With ♥ from Anthanh
