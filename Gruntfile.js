@@ -95,7 +95,7 @@ module.exports = function (grunt) {
   });
 
   // default task
-  grunt.registerTask('default', ['connect:livereload', 'watch']);
+  grunt.registerTask('default', ['wiredep', 'connect:livereload', 'watch']);
 
   // grunt composedTask === task1 => task2 => task3
   // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
