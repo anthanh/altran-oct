@@ -9,7 +9,7 @@
     "test:e2e": "protractor e2e/protractor.conf.js",
     "sass": "grunt sass",
     "lint": "grunt jshint && stylelint src/styles/*.scss",
-    "build": "npm run sass",
+    "build": "grunt build",
     "start": "grunt"
   },
   "repository": {
