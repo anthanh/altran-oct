@@ -85,6 +85,25 @@ module.exports = function (grunt) {
       }
     },
 
+    includeSource: {
+      options: {
+        basePath: ['<%= config.app %>', '.tmp'],
+        baseUrl: '',
+      },
+      server: {
+        files: {
+          '.tmp/cv.html': '<%= config.app %>/cv.html',
+          // '.tmp/index.html': '<%= config.app %>/index.html',
+          // '.tmp/bootstrap.html': '<%= config.app %>/bootstrap.html'
+        }
+      },
+      dist: {
+        files: {
+          '<%= config.dist %>/cv.html': '<%= config.app %>/cv.html'
+        }
+      }
+    },
+
 
     // config de grunt-plugin1
 
@@ -95,7 +114,14 @@ module.exports = function (grunt) {
   });
 
   // default task
-  grunt.registerTask('default', ['wiredep', 'connect:livereload', 'watch']);
+  grunt.registerTask('default', ['build']);
+
+  grunt.registerTask('build', [
+    'wiredep',
+    'includeSource:server',
+    'connect:livereload',
+    'watch'
+  ]);
 
   // grunt composedTask === task1 => task2 => task3
   // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
