@@ -73,6 +73,18 @@ module.exports = function (grunt) {
       }
     },
 
+    wiredep: {
+      app: {
+        src: [
+          '<%= config.app %>/*.html'
+        ],
+        ignorePath: /\.\.\//
+      },
+      sass: {
+        src: ['<%= config.app %>/styles/**/*.{scss,sass}']
+      }
+    },
+
 
     // config de grunt-plugin1
 
