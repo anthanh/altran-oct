@@ -8,6 +8,7 @@
     "test:unit": "./node_modules/mocha/bin/mocha tests/*.js",
     "test:e2e": "protractor e2e/protractor.conf.js",
     "sass": "node-sass src/styles/cv.scss > src/styles/cv.css",
+    "lint": "stylelint src/styles/*.scss",
     "build": "npm run sass",
     "start": "grunt"
   },
