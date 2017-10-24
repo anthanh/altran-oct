@@ -14,6 +14,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     appConfig: appConfig,
 
+    // config de grunt-contrib-connect
     connect: {
       options: {
         port: appConfig.port,
@@ -32,10 +33,20 @@ module.exports = function (grunt) {
           base: appConfig.src
         }
       }
-    }
+    },
+    // config de grunt-plugin1
+
+    // config de grunt-plugin2
+
+    // config de grunt-plugin3
 
   });
 
   // default task
-  grunt.registerTask('default', ['connect']);
+  // grunt.registerTask('default', ['connect']);
+
+  // grunt composedTask === task1 => task2 => task3
+  // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
+
+
 };
