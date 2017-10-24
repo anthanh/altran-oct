@@ -60,6 +60,12 @@ module.exports = function (grunt) {
         ],
         tasks: []
       },
+      html: {
+        files: [
+          '<%= config.app %>/**/*.html'
+        ],
+        tasks: ['includeSource:server']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
