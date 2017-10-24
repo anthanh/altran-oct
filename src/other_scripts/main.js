@@ -709,9 +709,9 @@ var promise7 = Promise.resolve();
 
 promise5.then(() => {
   return promise6.then(() => {
-    return promise7
-  })
-})
+    return promise7;
+  });
+});
 
 
 
@@ -721,11 +721,11 @@ var finalPromise = promise5
   .then((data7) => {
     // ==>>>>>>>>> TODO HA IDO BIEN
     return {
-      ok: data.ok,
-      status: data.status
+      ok: data7.ok,
+      status: data7.status
     };
   }).catch((error) => {
-    console.error(error)
+    console.error(error);
     return Promise.reject(error);
   })
 
@@ -736,7 +736,7 @@ var finalPromise = promise5.then(() => {
     return Promise.reject(error); // <= propagar el error de nuevo
   });
 }).then(() => {
-  return promise7
+  return promise7;
 }).then(function (data7) {
   // ==>>>>>>>>> TODO HA IDO BIEN
   return {
@@ -744,17 +744,17 @@ var finalPromise = promise5.then(() => {
     status: data.status
   };
 }).catch((error) => {
-  console.error(error)
+  console.error(error);
   return Promise.reject(error);
 })
 
 
 finalPromise.then((data) => {
   // { ok: data.ok, status: data.status }
-  console.log(data)
+  console.log(data);
   return data;
 }).catch((error) => {
-  return Promise.reject(error)
+  return Promise.reject(error);
 })
 
 

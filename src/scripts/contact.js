@@ -32,7 +32,7 @@
     if (event.target.checkValidity()) {
 
 
-      return;
+      // return;
 
       var promise = $.ajax({
         url: 'https://mybackend.com/upload',
