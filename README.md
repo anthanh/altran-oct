@@ -10,7 +10,6 @@ This project requires [node-sass](https://www.npmjs.com/package/node-sass).
 
 ```
 npm install
-npm install -g node-sass
 ```
 
 
