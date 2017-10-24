@@ -55,12 +55,14 @@
   "node": true,
 
   "globals": {
-      "indexedDB": true,
-      "Promise": true,
-      "alert": true,
-      "$": false,
-      "describe": true,
-      "xit": true,
-      "it": true
+    "postMessage": true,
+    "indexedDB": true,
+    "Promise": true,
+    "alert": true,
+    "$": false,
+    "stub": true,
+    "describe": true,
+    "xit": true,
+    "it": true
   }
 }

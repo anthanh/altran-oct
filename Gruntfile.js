@@ -58,7 +58,7 @@ module.exports = function (grunt) {
         files: [
           '<%= config.app %>/styles/**/*.{scss,sass}'
         ],
-        tasks: []
+        tasks: ['sass']
       },
       html: {
         files: [
@@ -130,6 +130,18 @@ module.exports = function (grunt) {
       }
     },
 
+    sass: {
+      all: {
+        files: [{
+          expand: true,
+          cwd: appConfig.app,
+          src: ['styles/cv.scss'],
+          dest: '.tmp',
+          ext: '.css'
+        }]
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
@@ -145,6 +157,7 @@ module.exports = function (grunt) {
     // 'jshint',
     'wiredep',
     'includeSource:server',
+    'sass',
     'connect:livereload',
     'watch'
   ]);
