@@ -75,11 +75,11 @@ var expresion;
 // if (expresion === '') {}
 // if (expresion === null) {}
 // if (expresion === undefined) {}
-if (!expresion) {}
+if (!expresion) {};
 var variableDefinida;
 
 if (variableDefinida) {
-
+  console.log(variableDefinida);
 }
 
 
@@ -91,16 +91,16 @@ var condition3 = function () {};
 
 
 if (condition1() || condition2() || condition3()) {
-
+  console.log(condition1);
 }
 
 if (condition1() && condition2() && condition3()) {
-
+  console.log(condition1);
 }
 
 // typescript
 // null vs undefined
-var myVariable = undefined;
+var myVariable;
 
 
 
@@ -133,9 +133,15 @@ function function2() {
 var list = [4, 54, 652, 2, 23, 4];
 
 list.sort(function (value1, value2) {
-  if (value1 >= value2) return -1;
-  if (value1 < value2) return 1;
-  if (value1 === value2) return 0;
+  if (value1 >= value2) {
+    return -1;
+  }
+  if (value1 < value2) {
+    return 1;
+  }
+  if (value1 === value2) {
+    return 0;
+  }
 });
 
 var list = [{
@@ -153,9 +159,9 @@ var list = [{
 }];
 
 list.sort(function (obj1, obj2) {
-  if (obj1.id >= obj2.id) return -1;
-  if (obj1.id < obj2.id) return 1;
-  if (obj1.id === obj2.id) return 0;
+  if (obj1.id >= obj2.id) {return -1;}
+  if (obj1.id < obj2.id) {return 1;}
+  if (obj1.id === obj2.id) {return 0;}
 });
 
 function Person(name, surname) {
@@ -194,7 +200,8 @@ console.log(airJordan.team === 'Chicago Bulls');
 console.log(scotiePippen.team === 'Chicago Bulls');
 
 
-pau.team === 'Spurs';
+var expresion = pau.team === 'Spurs';
+console.log(expresion);
 
 
 class PlayerClass extends Person {
@@ -212,10 +219,10 @@ class PlayerClass extends Person {
 
 }
 
-var player = new PlayerClass('name', 'surname', 'level')
+var player = new PlayerClass('name', 'surname', 'level');
 
-player.name;
-player.surname;
+console.log(player.name);
+console.log(player.surname);
 player.play();
 
 // interface AnyPerson {
@@ -277,18 +284,18 @@ var obj = {
 
 function suma( /*...*/ ) {
   console.log(arguments);
-  var args = Array.prototype.splice.call(arguments, 0, arguments.length)
+  var args = Array.prototype.splice.call(arguments, 0, arguments.length);
 
-  var total = 0;
-  return args.forEach(function (num) {
-    total = total + num;
-    // total += num;
-  });
+  // var total = 0;
+  // return args.forEach(function (num) {
+  //   total = total + num;
+  //   // total += num;
+  // });
 
-  return args.reduce(function (num, acum) {
-    console.log(this.name);
-    return num + acum;
-  }, 0);
+  // return args.reduce(function (num, acum) {
+  //   console.log(this.name);
+  //   return num + acum;
+  // }, 0);
 
   // es5
   // function ()  {
@@ -308,7 +315,7 @@ suma(1, 2, 3);
 class MyClass {
 
   constructor() {
-    this.name = 'pepe'
+    this.name = 'pepe';
     this.play = function () {
       // return args.reduce((num, acum) => {
       //   console.log(this.name)
@@ -575,24 +582,24 @@ service.getUsers()
 
 
 var timeout = setTimeout(() => {
-  console.log('TIMEOUT!')
+  console.log('TIMEOUT!');
 }, 5000)
-clearTimeout(timeout)
+clearTimeout(timeout);
 
 var inverval = setInterval(() => {
-  console.log('INVERVAL!')
-}, 1000)
+  console.log('INVERVAL!');
+}, 1000);
 clearInterval(inverval)
 
 
 (function () {
   console.log(1);
   setTimeout(() => {
-    console.log('2')
+    console.log('2');
   }, 1000);
   // defer next tick (hack)
   setTimeout(() => {
-    console.log('3')
+    console.log('3');
   }, 0);
   console.log(4);
 })();
@@ -615,7 +622,7 @@ for (var i = 0; i < 5; i++) {
 for (var i = 0; i < 5; i++) {
   setTimeout((function (index) {
     return function () {
-      console.log(index)
+      console.log(index);
     };
   })(i), i * 1000);
 }
@@ -793,16 +800,16 @@ suma = (a, b) => {
   return a + b;
 }
 
-stub(suma, 5)
+stub(suma, 5);
 
-suma(2, 7) => 5
+suma(2, 7); // => 5
 
 var estoEsUnaFuncionAsyncrona;
 
-stub(estoEsUnaFuncionAsyncrona, Promise.resolve(5))
+stub(estoEsUnaFuncionAsyncrona, Promise.resolve(5));
 
 
-estoEsUnaFuncionAsyncrona.then(value => console.log(value))
+estoEsUnaFuncionAsyncrona.then(value => console.log(value));
 
 
 // BDD
@@ -811,15 +818,15 @@ describe('Como usaurio', () => {
     describe('si tiene stock', () => {
       it('puedo añadirlo al carrito', () => {
         // test code
-      })
-    })
-  })
+      });
+    });
+  });
   describe('si entro en ofertas', () => {
     it('puedo ver las ofertas de día', () => {
 
-    })
-  })
-})
+    });
+  });
+});
 
 
 
@@ -829,17 +836,17 @@ describe('En el servicio de autenticación', () => {
     describe('si envío credenciales correctas', () => {
       it('logeo correctamente', () => {
         // test code
-      })
+      });
       describe('tengo el token exporado', () => {
         it('develve error', () => {
           // test code
-        })
-      })
-    })
+        });
+      });
+    });
     describe('si no envío credenciales correctas', () => {
       it('no logeo correctamente', () => {
         // test code
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});

@@ -66,6 +66,12 @@ module.exports = function (grunt) {
         ],
         tasks: ['includeSource:server']
       },
+      js: {
+        files: [
+          '<%= config.app %>/*/*.js'
+        ],
+        tasks: ['jshint']
+      },
       livereload: {
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -110,6 +116,19 @@ module.exports = function (grunt) {
       }
     },
 
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      all: {
+        src: [
+          'Gruntfile.js',
+          // glob npm => file patters => https://www.npmjs.com/package/glob
+          '<%= config.app %>/*/*.js',
+        ]
+      }
+    },
 
     // config de grunt-plugin1
 
@@ -123,6 +142,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['build']);
 
   grunt.registerTask('build', [
+    // 'jshint',
     'wiredep',
     'includeSource:server',
     'connect:livereload',
