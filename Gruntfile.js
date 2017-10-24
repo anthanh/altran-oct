@@ -22,6 +22,7 @@ module.exports = function (grunt) {
   };
 
   grunt.initConfig({
+    // permitir acceso a la config desde los templates!!!
     config: appConfig,
 
     // config de grunt-contrib-connect
@@ -34,7 +35,7 @@ module.exports = function (grunt) {
         // socket para refrescar browser
         livereload: appConfig.ports.liveReload,
         // mantener server vivo siempre
-        keepalive: true
+        // keepalive: true
       },
       // subtarea livereload
       livereload: {
@@ -52,6 +53,26 @@ module.exports = function (grunt) {
       }
     },
 
+    watch: {
+      sass: {
+        files: [
+          '<%= config.app %>/styles/**/*.{scss,sass}'
+        ],
+        tasks: []
+      },
+      livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        },
+        files: [
+          '.tmp/*.html',
+          '<%= config.app %>/**/*.html',
+          '.tmp/styles/**/*.css',
+          '<%= config.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
+      }
+    },
+
 
     // config de grunt-plugin1
 
@@ -62,7 +83,7 @@ module.exports = function (grunt) {
   });
 
   // default task
-  grunt.registerTask('default', ['connect:livereload']);
+  grunt.registerTask('default', ['connect:livereload', 'watch']);
 
   // grunt composedTask === task1 => task2 => task3
   // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
