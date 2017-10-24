@@ -5,23 +5,32 @@ module.exports = function (grunt) {
   // Time how long tasks take.
   require('time-grunt')(grunt);
 
+// window => global object browser
+// process => global object node
+
   var appConfig = {
-    port: 9000,
-    ip: '0.0.0.0',
-    src: '.'
-  };
+    env: process.NODE_ENV || 'development', // 'dev', 'prod'
+    app: require('./package.json').appPath || 'src',
+    dist: 'dist',
+    // Change this to '0.0.0.0' to access the server from outside.
+    hostname: '0.0.0.0',
+    ports: {
+      server: grunt.option('serverPort') || 9000,
+      liveReload: grunt.option('liveReloadPort') || 35729
+    }
+  }; // => Object
 
   grunt.initConfig({
-    appConfig: appConfig,
+    config: appConfig,
 
     // config de grunt-contrib-connect
     connect: {
       options: {
-        port: appConfig.port,
+        port: appConfig.ports.server,
         // IP comodín: localhost|192.1.168.123|179.54.12.0
-        hostname: appConfig.ip,
+        hostname: appConfig.hostname,
         // socket para refrescar browser
-        livereload: true,
+        livereload: appConfig.ports.liveReload,
         // mantener server vivo siempre
         keepalive: true
       },
@@ -30,7 +39,7 @@ module.exports = function (grunt) {
           // abrir browser
           open: true,
           // definir qué carpetas servir
-          base: appConfig.src
+          base: ['.', appConfig.app]
         }
       }
     },
@@ -43,10 +52,22 @@ module.exports = function (grunt) {
   });
 
   // default task
-  // grunt.registerTask('default', ['connect']);
+  grunt.registerTask('default', ['connect']);
 
   // grunt composedTask === task1 => task2 => task3
   // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
 
+  // grunt.registerTask('customTask', () => { }));
 
 };
+
+/*
+build =>
+compilar sass
+concatenar JS
+concatenar CSS
+minimizar HTML
+minimizar JS
+minimizar CSS
+minimizar Imágenes
+*/
