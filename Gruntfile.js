@@ -193,6 +193,20 @@ module.exports = function (grunt) {
       }
     },
 
+    autoprefixer: {
+      options: {
+        browsers: ['> 1%', 'last 3 version']
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '.tmp/styles/',
+          src: '**/*.css',
+          dest: '.tmp/styles/'
+        }]
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
@@ -209,7 +223,8 @@ module.exports = function (grunt) {
     'wiredep',
     'includeSource:server',
     'copy:serve',
-    'sass'
+    'sass',
+    'autoprefixer'
   ]);
 
   grunt.registerTask('serve', [
