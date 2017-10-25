@@ -1,8 +1,8 @@
 'use strict';
 
-(() => {
+(function() {
 
-  $('form').submit((event) => {
+  $('form').submit(function(event) {
     event.preventDefault();
 
     // Provoca que relance los eventos invalid de todos sus hijos inválidos
@@ -11,8 +11,8 @@
 
     var elems = $('form *[required]');
     // elems = Array.prototype.slice.call(elems, 0, elems.legnth);
-    // elems.forEach((elemItem) => {
-    elems.each((index, elemItem) => {
+    // elems.forEach(function(elemItem) {
+    elems.each(function(index, elemItem) {
       var isValid = elemItem.checkValidity();
       if (isValid) {
         $(elemItem).removeClass('invalid');
@@ -24,7 +24,7 @@
     });
 
     var data = {};
-    $('form input, form textarea, form select').each((index, elemItem) => {
+    $('form input, form textarea, form select').each(function(index, elemItem) {
       data[elemItem.name] = $(elemItem).val();
     });
     console.log('form info', data);
@@ -49,9 +49,9 @@
         body: JSON.stringify(data)
       });
 
-      promise.then((response) => {
+      promise.then(function(response) {
         alert('sended!');
-      }).catch((err) => {
+      }).catch(function(err) {
         console.error(err);
         return Promise.reject(err);
       });
@@ -66,7 +66,7 @@
 
   });
 
-  $('#age2').change((event) => {
+  $('#age2').change(function(event) {
     $('#age').val($(event.target).val());
   });
 

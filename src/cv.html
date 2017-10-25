@@ -35,7 +35,10 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/tables.css">
   <link rel="stylesheet" href="css/utils.css"> -->
+
+  <!-- build:css(.tmp) /styles/main.css -->
   <link rel="stylesheet" href="styles/cv.css">
+  <!-- endbuild -->
 </head>
 
 <body>
@@ -355,14 +358,21 @@
     Crazy house © &copy; 2017
   </footer>
 
+  <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
   <!-- endbower -->
+  <!-- endbuild -->
+
   <!-- <script src="scripts/nav.js"></script>
   <script src="scripts/contact.js"></script> -->
 
-  <!-- include: "type": "js", "files": ["scripts/**/*.js"], "baseUrl": "" -->
+  <!-- build:js({.,.tmp,src}) scripts/scripts.js -->
+
+    <!-- include: "type": "js", "files": ["scripts/**/*.js"], "baseUrl": "" -->
+
+  <!-- endbuild -->
 
 </body>
 

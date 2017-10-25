@@ -47,8 +47,6 @@ module.exports = function (grunt) {
         hostname: appConfig.hostname,
         // socket para refrescar browser
         livereload: appConfig.ports.liveReload,
-        // mantener server vivo siempre
-        // keepalive: true
       },
       // subtarea livereload
       livereload: {
@@ -60,8 +58,10 @@ module.exports = function (grunt) {
       // subtarea dist
       dist: {
         options: {
+          // mantener server vivo siempre
+          keepalive: true,
           open: true,
-          base: ['.tmp', appConfig.dist]
+          base: appConfig.dist
         }
       }
     },
@@ -176,8 +176,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/{,*/}*',
-            'fonts/*',
-            '**/*.js'
+            'fonts/*'
           ]
         }, {
           expand: true,
@@ -219,6 +218,54 @@ module.exports = function (grunt) {
       }
     },
 
+    // Reads HTML for usemin blocks to enable smart builds that automatically
+    // concat, minify and revision files. Creates configurations in memory so
+    // additional tasks can operate on them
+    useminPrepare: {
+      html: '<%= config.dist %>/cv.html',
+      options: {
+        dest: '<%= config.dist %>',
+        flow: {
+          html: {
+            steps: {
+              js: ['concat', 'uglifyjs'],
+              css: ['cssmin']
+            },
+            post: {}
+          }
+        }
+      }
+    },
+
+    // Performs rewrites based on filerev and the useminPrepare configuration
+    usemin: {
+      html: ['<%= config.dist %>/*.html'],
+      css: ['<%= config.dist %>/styles/**/*.css'],
+      options: {
+        assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
+      }
+    },
+
+    htmlmin: {
+      options: {
+        // Be carefull some html needs comments for example, for IE support
+        removeComments: true,
+        collapseWhitespace: true,
+        conservativeCollapse: true,
+        collapseBooleanAttributes: true,
+        removeCommentsFromCDATA: true,
+        removeOptionalTags: true
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: '<%= config.dist %>',
+          src: ['**/*.html'],
+          dest: '<%= config.dist %>'
+        }]
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
@@ -230,19 +277,41 @@ module.exports = function (grunt) {
   // default task
   grunt.registerTask('default', ['serve']);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build:serve', [
     'clean',
     'wiredep',
     'includeSource:server',
     'copy:serve',
     'sass',
-    'autoprefixer'
+    'autoprefixer',
+    'useminPrepare'
+  ]);
+
+  grunt.registerTask('build', [
+    'clean',
+    'wiredep',
+    'copy:dist',
+    'includeSource:dist',
+    'sass',
+    'autoprefixer',
+    'useminPrepare',
+    'cssmin:generated',
+    'concat:generated',
+    'uglify:generated',
+    'filerev',
+    'usemin',
+    'htmlmin'
   ]);
 
   grunt.registerTask('serve', [
-    'build',
+    'build:serve',
     'connect:livereload',
     'watch'
+  ]);
+
+  grunt.registerTask('serve:dist', [
+    'build',
+    'connect:dist'
   ]);
 
   // grunt composedTask === task1 => task2 => task3
