@@ -25,6 +25,19 @@ module.exports = function (grunt) {
     // permitir acceso a la config desde los templates!!!
     config: appConfig,
 
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src: [
+            '.sass-cache',
+            '.tmp',
+            '<%= config.dist %>'
+          ]
+        }]
+      }
+    },
+
     // config de grunt-contrib-connect
     connect: {
       // configuración global a todas las subtareas
@@ -192,6 +205,7 @@ module.exports = function (grunt) {
   grunt.registerTask('default', ['serve']);
 
   grunt.registerTask('build', [
+    'clean',
     'wiredep',
     'includeSource:server',
     'copy:serve',
