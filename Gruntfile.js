@@ -144,6 +144,42 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      serve: {
+        files: [{
+          expand: true,
+          cwd: 'bower_components/bootstrap-sass/assets/fonts',
+          dest: '.tmp/assets/fonts',
+          src: ['**/*']
+        }]
+      },
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.app %>',
+          dest: '<%= config.dist %>',
+          src: [
+            '*.{ico,png,txt}',
+            '*.html',
+            'images/{,*/}*',
+            'fonts/*',
+            '**/*.js'
+          ]
+        }, {
+          expand: true,
+          cwd: '.tmp/images',
+          dest: '<%= config.dist %>/images',
+          src: ['generated/*']
+        }, {
+          expand: true,
+          cwd: 'bower_components/bootstrap-sass/assets/fonts',
+          dest: '<%= config.dist %>/assets/fonts',
+          src: ['**/*']
+        }]
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
@@ -158,6 +194,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'wiredep',
     'includeSource:server',
+    'copy:serve',
     'sass'
   ]);
 
