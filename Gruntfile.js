@@ -105,13 +105,15 @@ module.exports = function (grunt) {
       server: {
         files: {
           '.tmp/cv.html': '<%= config.app %>/cv.html',
+          '.tmp/bootstrap.html': '<%= config.app %>/bootstrap.html',
           // '.tmp/index.html': '<%= config.app %>/index.html',
           // '.tmp/bootstrap.html': '<%= config.app %>/bootstrap.html'
         }
       },
       dist: {
         files: {
-          '<%= config.dist %>/cv.html': '<%= config.app %>/cv.html'
+          '<%= config.dist %>/cv.html': '<%= config.app %>/cv.html',
+          '<%= config.dist %>/bootstrap.html': '<%= config.app %>/bootstrap.html'
         }
       }
     },
@@ -151,13 +153,16 @@ module.exports = function (grunt) {
   });
 
   // default task
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['serve']);
 
   grunt.registerTask('build', [
-    // 'jshint',
     'wiredep',
     'includeSource:server',
-    'sass',
+    'sass'
+  ]);
+
+  grunt.registerTask('serve', [
+    'build',
     'connect:livereload',
     'watch'
   ]);

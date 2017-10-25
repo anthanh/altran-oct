@@ -303,30 +303,12 @@
     </div>
   </div>
 
-
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-  <!-- <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script> -->
-
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
   <!-- endbower -->
-  <script>
-    function setProgress(progressElem, percentage) {
-      progressElem.css('width', percentage + '%');
-      progressElem.html(percentage + '%');
-      // document.querySelector('.progress-bar').style.width = '20%'
-      // document.querySelector('.progress-bar').style.innerHTML = '20%'
-    }
 
-    setInterval(() => {
-      setProgress($('.progress-bar-primary'), Math.floor((Math.random() * 100) + 1))
-      setProgress($('.progress-bar-success'), Math.floor((Math.random() * 100) + 1))
-      setProgress($('.progress-bar-danger'), Math.floor((Math.random() * 100) + 1))
-    }, 2000)
-
-  </script>
+  <!-- include: "type": "js", "files": ["scripts/**/*.js"], "baseUrl": "" -->
 
 </body>
 
