@@ -207,6 +207,18 @@ module.exports = function (grunt) {
       }
     },
 
+    // Renames files for browser caching purposes
+    filerev: {
+      dist: {
+        src: [
+          '<%= config.dist %>/*/*.js',
+          '<%= config.dist %>/styles/{,*/}*.css',
+          '<%= config.dist %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= config.dist %>/assets/fonts/*'
+        ]
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
