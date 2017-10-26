@@ -1,5 +1,5 @@
 .center {
-  text-align: center !important;
+  text-align: center !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .center-block {
@@ -8,5 +8,5 @@
 }
 
 .hidden {
-  display: none !important;
+  display: none !important; /* stylelint-disable-line declaration-no-important */
 }

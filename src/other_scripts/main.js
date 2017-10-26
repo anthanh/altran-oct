@@ -43,7 +43,8 @@ var number = 4;
 
 listado.reverse().forEach(mostrarEnLog);
 
-var cadena = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto voluptate perferendis, at nostrum illo sapiente!';
+var cadena = 'Lorem ipsum dolor sit amet consectetur adipisicing' +
+  ' elit. Iusto voluptate perferendis, at nostrum illo sapiente!';
 var csv = 'name;surname;age;gender;email';
 var splited = csv.split(';');
 
@@ -64,10 +65,10 @@ console.log(cadena.slice(6, 20));
 console.log(cadena.split(' ').join('-'));
 
 
-console.log("parseInt('10')", parseInt('10', 10));
-console.log("parseInt('10 cows')", parseInt('10 cows', 10));
-console.log("parseInt('cows 10')", parseInt('cows 10', 10));
-console.log("parseInt('09/2017')", parseInt('09/2017', 10));
+console.log('parseInt("10")', parseInt('10', 10));
+console.log('parseInt("10 cows")', parseInt('10 cows', 10));
+console.log('parseInt("cows 10")', parseInt('cows 10', 10));
+console.log('parseInt("09/2017")', parseInt('09/2017', 10));
 
 var expresion;
 
@@ -75,7 +76,9 @@ var expresion;
 // if (expresion === '') {}
 // if (expresion === null) {}
 // if (expresion === undefined) {}
-if (!expresion) {};
+if (!expresion) {
+  console.log();
+}
 var variableDefinida;
 
 if (variableDefinida) {
@@ -159,9 +162,15 @@ var list = [{
 }];
 
 list.sort(function (obj1, obj2) {
-  if (obj1.id >= obj2.id) {return -1;}
-  if (obj1.id < obj2.id) {return 1;}
-  if (obj1.id === obj2.id) {return 0;}
+  if (obj1.id >= obj2.id) {
+    return -1;
+  }
+  if (obj1.id < obj2.id) {
+    return 1;
+  }
+  if (obj1.id === obj2.id) {
+    return 0;
+  }
 });
 
 function Person(name, surname) {
@@ -326,35 +335,35 @@ class MyClass {
 
 }
 
-myClass = new MyClass();
+var myClass = new MyClass();
 
 // myClass.play();
 
 
 
-(function () {
-  // this1
-  var a = b = 3;
-  // var someProp = this.h
+// (function () {
+//   // this1
+//   var a = b = 3;
+//   // var someProp = this.h
 
-  (function () {
-    // this2
-    var c = b = a = someProp = 4;
-  })();
+//   (function () {
+//     // this2
+//     var c = b = a = someProp = 4;
+//   })();
 
-})();
+// })();
 
-function test() {
-  console.log(a);
-  console.log(foo());
+// function test() {
+//   console.log(a);
+//   console.log(foo());
 
-  var a = 1;
+//   var a = 1;
 
-  function foo() {
-    return 2;
-  }
+//   function foo() {
+//     return 2;
+//   }
 
-}
+// }
 
 
 // hoisting
@@ -373,7 +382,7 @@ function test() {
 }
 
 
-node = document.createElement('a');
+var node = document.createElement('a');
 node.setAttribute('href', 'anthanh.com');
 node.setAttribute('target', '_blank');
 node.setAttribute('href', 'http://anthanh.com');
@@ -394,7 +403,7 @@ document.body.appendChild(node);
 // en un punto en particular
 document.querySelector('#box-model').appendChild(node);
 
-var node = document.querySelector('#box-model');
+node = document.querySelector('#box-model');
 node.style.backgroundColor = '#456325';
 node.classList.add('my-class');
 node.classList.remove('my-class');
@@ -550,8 +559,8 @@ var suma10 = sumaNum(10);
 function increment() {
   var count = 0;
   return function () {
-    return count = count + 1;
-    // return count += 1;
+    // return count = count + 1;
+    return count += 1;
     // return ++count;
   };
 }
@@ -559,7 +568,7 @@ function increment() {
 
 // 5º ejemplo
 
-function myService(enpoint) {
+function myService(endpoint) {
   var _apiEndpoint = endpoint || 'http://mydomain.com/';
 
   return {
@@ -576,14 +585,14 @@ function myService(enpoint) {
 }
 
 var service = myService('http://otherdomain.com');
-service.getUsers()
+service.getUsers();
 
 
 
 
 var timeout = setTimeout(() => {
   console.log('TIMEOUT!');
-}, 5000)
+}, 5000);
 clearTimeout(timeout);
 
 var inverval = setInterval(() => {
@@ -630,8 +639,8 @@ for (var i = 0; i < 5; i++) {
 
 // jquery: inputs
 
-$('input[id="name"]').val('ay ay ay')
-$('input[name="checkbox-input"]')[1].checked = false
+$('input[id="name"]').val('ay ay ay');
+$('input[name="checkbox-input"]')[1].checked = false;
 
 $(document).ready(() => {
   // DOM READY FOR COMBAT
@@ -658,9 +667,9 @@ var timeoutPromise = new Promise(function (resolve, reject) {
 
 timeoutPromise.then(function (data) {
   console.log('data', data); // => valor
-})
+});
 
-function myServiceMock(enpoint) {
+function myServiceMock(endpoint) {
   var _apiEndpoint = endpoint || 'http://mydomain.com/';
   var users = [1, 2, 3, 4];
   var books = [1, 2, 3, 4];
@@ -695,8 +704,8 @@ var parallelPromises = Promise.all([promise1, promise2, promise3]).then(function
   // ALL PROMISE SUCCESS!!!!!
 }).catch(function (error) {
   // SOME HAS FAILED !!!!
-  return Promise.reject(error)
-})
+  return Promise.reject(error);
+});
 
 
 
@@ -727,7 +736,7 @@ var finalPromise = promise5
   }).catch((error) => {
     console.error(error);
     return Promise.reject(error);
-  })
+  });
 
 var finalPromise = promise5.then(() => {
   return promise6.catch((error) => {
@@ -740,13 +749,13 @@ var finalPromise = promise5.then(() => {
 }).then(function (data7) {
   // ==>>>>>>>>> TODO HA IDO BIEN
   return {
-    ok: data.ok,
-    status: data.status
+    ok: data7.ok,
+    status: data7.status
   };
 }).catch((error) => {
   console.error(error);
   return Promise.reject(error);
-})
+});
 
 
 finalPromise.then((data) => {
@@ -755,7 +764,7 @@ finalPromise.then((data) => {
   return data;
 }).catch((error) => {
   return Promise.reject(error);
-})
+});
 
 
 // Paralelizar + Sincronizar promesas
@@ -764,7 +773,7 @@ finalPromise.then((data) => {
 // promesa3 =>  |
 
 // parallelPromises.then(() => { return finalPromise })
-parallelPromises.then(() => finalPromise)
+parallelPromises.then(() => finalPromise);
 
 
 // modelo antogio de callbacks
@@ -774,7 +783,7 @@ $.ajax({
   complete: function () {},
   error: function () {},
   // url: 'http://jsonplaceholder.typicode.com/posts'
-})
+});
 
 
 // login(username, provider) => {
@@ -796,9 +805,9 @@ $.ajax({
 
 
 
-suma = (a, b) => {
+var suma = (a, b) => {
   return a + b;
-}
+};
 
 stub(suma, 5);
 

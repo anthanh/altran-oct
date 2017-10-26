@@ -1,13 +1,13 @@
 browser.waitForAngularEnabled(false);
 
-waitForVisibleElement = (selector, timeout = 5000) => {
+var waitForVisibleElement = (selector, timeout = 5000) => {
   return browser.wait(
     protractor.until.elementLocated(by.css(selector)),
     timeout
   );
 };
 
-var bonolotoNumbersSelector = '#lastResultsCarruselRegion .primitiva .numero'
+var bonolotoNumbersSelector = '#lastResultsCarruselRegion .primitiva .numero';
 
 describe('En la página de loterias', () => {
   it('Puedo obtener el último número de la bonoloto', (done) => {
@@ -17,7 +17,7 @@ describe('En la página de loterias', () => {
     waitForVisibleElement(bonolotoNumbersSelector).then(() => {
       return element(by.css(bonolotoNumbersSelector)).getText();
     }).then((data) => {
-      console.log(data)
+      console.log(data);
       done();
     });
 

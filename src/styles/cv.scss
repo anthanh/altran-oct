@@ -1,29 +1,29 @@
-@import 'variables';
-// @import '../css/normalize.css';
+@import "variables";
+// @import "../css/normalize.css";
 
 // bower:scss
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 // base
-@import 'fonts';
-@import 'grid';
-@import 'mixins';
-@import 'responsive';
-@import 'forms';
-@import 'layout';
-@import 'links';
-@import 'buttons';
-@import 'tables';
-@import 'utils';
-@import 'nav';
+@import "fonts";
+@import "grid";
+@import "mixins";
+@import "responsive";
+@import "forms";
+@import "layout";
+@import "links";
+@import "buttons";
+@import "tables";
+@import "utils";
+@import "nav";
 // sections
-@import 'bootstrap';
-@import 'header';
-@import 'personal';
-@import 'resume';
-@import 'images';
-@import 'languages';
-@import 'video';
-@import 'map';
+@import "bootstrap";
+@import "header";
+@import "personal";
+@import "resume";
+@import "images";
+@import "languages";
+@import "video";
+@import "map";
 

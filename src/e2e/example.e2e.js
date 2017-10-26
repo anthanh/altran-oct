@@ -1,6 +1,6 @@
 browser.waitForAngularEnabled(false);
 
-waitForVisibleElement = (selector, timeout = 5000) => {
+var waitForVisibleElement = (selector, timeout = 5000) => {
   return browser.wait(
     protractor.until.elementLocated(by.css(selector)),
     timeout
@@ -19,7 +19,7 @@ describe('google page', () => {
       // document.querySelector('input[jsaction="sf.chk"]').click()
       return element(by.css('#lst-ib')).sendKeys(protractor.Key.ENTER);
     }).then(() => {
-      return waitForVisibleElement('#resultStats')
+      return waitForVisibleElement('#resultStats');
     }).then(() => {
       return element(by.css('#resultStats')).getText();
     }).then((data) => {

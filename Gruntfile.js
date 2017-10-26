@@ -279,6 +279,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build:serve', [
     'clean',
+    'jshint',
     'wiredep',
     'includeSource:server',
     'copy:serve',
@@ -289,6 +290,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean',
+    'jshint',
     'wiredep',
     'copy:dist',
     'includeSource:dist',

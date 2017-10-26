@@ -55,7 +55,7 @@ select {
   input {
     width: auto;
     &[type="radio"] {
-      font-weight: bold;
+      font-weight: 500;
     }
   }
 }
