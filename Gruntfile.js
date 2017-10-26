@@ -145,15 +145,28 @@ module.exports = function (grunt) {
       }
     },
 
+    // grunt-contrib-sass
+    // sass: {
+    //   all: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: appConfig.app,
+    //       src: ['styles/cv.scss'],
+    //       dest: '.tmp',
+    //       ext: '.css'
+    //     }]
+    //   }
+    // },
+
+    // grunt-sass
     sass: {
-      all: {
-        files: [{
-          expand: true,
-          cwd: appConfig.app,
-          src: ['styles/cv.scss'],
-          dest: '.tmp',
-          ext: '.css'
-        }]
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          '.tmp/styles/cv.css': '<%= config.app %>/styles/cv.scss'
+        }
       }
     },
 
