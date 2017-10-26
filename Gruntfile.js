@@ -279,6 +279,12 @@ module.exports = function (grunt) {
       }
     },
 
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
+
     // config de grunt-plugin1
 
     // config de grunt-plugin2
@@ -288,7 +294,13 @@ module.exports = function (grunt) {
   });
 
   // default task
-  grunt.registerTask('default', ['serve']);
+  grunt.registerTask('default', ['test', 'serve']);
+
+  grunt.registerTask('test', [
+    'clean',
+    'jshint',
+    // 'karma'
+  ]);
 
   grunt.registerTask('build:serve', [
     'clean',
@@ -302,6 +314,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'test',
     'clean',
     'jshint',
     'wiredep',
