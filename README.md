@@ -23,6 +23,8 @@ npm run start
 
 ```
 grunt
+grunt serve
+grunt serve:dist
 ```
 
 
@@ -30,6 +32,13 @@ grunt
 
 ```
 npm run build
+```
+
+* Alternatively
+
+```
+grunt
+grunt build
 ```
 
 ## How to run this tests
@@ -52,6 +61,18 @@ npm run test:unit
 ```
 webdriver-manager start   # in one terminal
 npm run test:e2e          # in another terminal
+```
+
+* Code linters
+
+```
+npm run lint
+```
+
+* Alternatively
+
+```
+grunt jshint
 ```
 
 
