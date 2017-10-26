@@ -63,6 +63,11 @@
     "stub": true,
     "describe": true,
     "xit": true,
-    "it": true
+    "it": true,
+    "expect": true,
+    "browser": true,
+    "by": true,
+    "protractor": true,
+    "element": true
   }
 }
