@@ -314,7 +314,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'test',
     'clean',
     'jshint',
     'wiredep',
@@ -331,16 +330,17 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('serve', [
-    'build:serve',
-    'connect:livereload',
-    'watch'
-  ]);
-
-  grunt.registerTask('serve:dist', [
-    'build',
-    'connect:dist'
-  ]);
+  // grunt task:target --optionName
+  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+    if (target === 'dist') {
+      return grunt.task.run(['build', 'connect:dist']);
+    }
+    grunt.task.run([
+      'build:serve',
+      'connect:livereload',
+      'watch'
+    ]);
+  });
 
   // grunt composedTask === task1 => task2 => task3
   // grunt.registerTask('composedTask', ['task1', 'task2', 'task3']);
